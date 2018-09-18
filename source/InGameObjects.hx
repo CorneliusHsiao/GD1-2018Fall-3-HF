@@ -7,10 +7,12 @@ import flixel.text.FlxText;
 import flixel.ui.FlxButton;
 import flixel.math.FlxMath;
 
+// ************* DO NOT NEED NOW *************
 /*
 	class Scene:
 	Hold all elements that will fill the whole window throughout the main game.
 */
+/*
 class Scene extends FlxSprite {
 	var _background:String = "";
 
@@ -21,6 +23,7 @@ class Scene extends FlxSprite {
 		loadGraphic("assets/images/"+_background, false, width, height);
 	}
 }
+*/
 
 /*
 	class Slot:
@@ -150,9 +153,6 @@ class Target extends FlxSprite {
 class Guard extends FlxSprite {
 	var _row:Int = 0;
 	var _col:Int = 0;
-	var _speed:Int = -1;
-	var _dir:Int = -1;
-
 	/*
 		_speed: speed of current movement (slots per 3 seconds)
 		_dir: direction of movement
@@ -161,6 +161,9 @@ class Guard extends FlxSprite {
 		2: Leftward
 		3: Rightward
 	*/
+	var _speed:Int = -1;
+	var _dir:Int = -1;
+
 	public function new(?row:Int=0, ?col:Int=0, ?speed:Int=-1, ?dir:Int=-1) {
 		super(row, col);
 		_row = row;
