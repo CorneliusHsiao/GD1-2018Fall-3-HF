@@ -1,1 +1,632 @@
-{}
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"ind",
+				"index_1"
+			],
+			[
+				"as",
+				"astype"
+			],
+			[
+				"out",
+				"out_img_b"
+			],
+			[
+				"num",
+				"num_col"
+			],
+			[
+				"VR",
+				"VR_SOE"
+			],
+			[
+				"if",
+				"ifmain\tif __name__ == '__main__'"
+			],
+			[
+				"vert",
+				"vertices"
+			],
+			[
+				"prin",
+				"printGraph"
+			],
+			[
+				"pr",
+				"print"
+			],
+			[
+				"ver",
+				"vertices"
+			],
+			[
+				"rever",
+				"reverse_edges_"
+			],
+			[
+				"ede",
+				"edges_"
+			],
+			[
+				"edge",
+				"edges_"
+			],
+			[
+				"tmp",
+				"tmp_post"
+			],
+			[
+				"post",
+				"post_"
+			],
+			[
+				"ve",
+				"vertices"
+			],
+			[
+				"edges_",
+				"edges_"
+			],
+			[
+				"name",
+				"name_"
+			],
+			[
+				"edg",
+				"edge"
+			],
+			[
+				"tm",
+				"tmpGR"
+			],
+			[
+				"p3",
+				"p3-p1-p2"
+			],
+			[
+				"d",
+				"d"
+			],
+			[
+				"op",
+				"optFib2"
+			],
+			[
+				"i",
+				"i"
+			],
+			[
+				"t",
+				"t"
+			],
+			[
+				"all",
+				"all_names"
+			],
+			[
+				"itr",
+				"itr_2"
+			],
+			[
+				"beig",
+				"begin"
+			],
+			[
+				"delet",
+				"deleteAll"
+			],
+			[
+				"dele",
+				"deleteAll"
+			],
+			[
+				"v",
+				"v"
+			],
+			[
+				"m",
+				"m_power"
+			],
+			[
+				"a",
+				"a"
+			],
+			[
+				"r",
+				"return"
+			],
+			[
+				"m_",
+				"m_nickname"
+			],
+			[
+				"W",
+				"Wood"
+			],
+			[
+				"Find",
+				"FindSmallestInRange"
+			],
+			[
+				"value",
+				"value_5"
+			],
+			[
+				"begin",
+				"begin"
+			],
+			[
+				"size",
+				"size"
+			],
+			[
+				"key",
+				"keys"
+			],
+			[
+				"chil",
+				"children_empty"
+			],
+			[
+				"siz",
+				"size"
+			],
+			[
+				"root",
+				"root_"
+			],
+			[
+				"new",
+				"new_parent"
+			],
+			[
+				"B",
+				"BPlusTreeNode"
+			],
+			[
+				"T",
+				"TreeNode"
+			],
+			[
+				"old",
+				"old_root"
+			],
+			[
+				"genera",
+				"generate_most_common_3"
+			],
+			[
+				"se",
+				"sentence"
+			],
+			[
+				"word",
+				"word_max"
+			],
+			[
+				"MY",
+				"MY_MAP_3"
+			],
+			[
+				"window",
+				"window_size"
+			],
+			[
+				"data",
+				"data_3"
+			],
+			[
+				"ge",
+				"generate_most_common"
+			],
+			[
+				"wind",
+				"window_size"
+			],
+			[
+				"cou",
+				"counters"
+			],
+			[
+				"re",
+				"reverse"
+			],
+			[
+				"bl",
+				"blocked_grid"
+			],
+			[
+				"start",
+				"start_y"
+			],
+			[
+				"find",
+				"find_ways"
+			],
+			[
+				"st",
+				"steps"
+			],
+			[
+				"cu",
+				"current_c"
+			],
+			[
+				"c",
+				"current_r"
+			],
+			[
+				"curr",
+				"current_c"
+			],
+			[
+				"s",
+				"size_"
+			],
+			[
+				"ne",
+				"next_"
+			],
+			[
+				"prev",
+				"prev_song_ptr"
+			],
+			[
+				"las",
+				"last_song"
+			],
+			[
+				"last",
+				"last_song"
+			],
+			[
+				"Song",
+				"SongGroupNode"
+			],
+			[
+				"fir",
+				"first_song_copy"
+			],
+			[
+				"first",
+				"first_song"
+			],
+			[
+				"nex",
+				"next_song_ptr"
+			],
+			[
+				"pre",
+				"prev_by_year_ptr"
+			],
+			[
+				"print",
+				"print_file"
+			],
+			[
+				"file",
+				"file_buffer"
+			],
+			[
+				"push",
+				"push_back"
+			],
+			[
+				"col",
+				"col_"
+			],
+			[
+				"r2",
+				"r2_points"
+			],
+			[
+				"r1",
+				"r1_points"
+			],
+			[
+				"Point",
+				"Point2D"
+			],
+			[
+				"label",
+				"label_stack"
+			],
+			[
+				"set",
+				"setMinute"
+			],
+			[
+				"time",
+				"time_1"
+			],
+			[
+				"get",
+				"getSecond"
+			],
+			[
+				"tim",
+				"time_1"
+			],
+			[
+				"ti",
+				"time_2"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/CorneliusHsiao/Desktop/Senior/Game Development I/Projects/GD1-2018Fall-3-HF/FlixelTut",
+		"/Users/CorneliusHsiao/Desktop/Senior/Game Development I/Projects/GD1-2018Fall-3-HF/FlixelTut/assets",
+		"/Users/CorneliusHsiao/Desktop/Senior/Game Development I/Projects/GD1-2018Fall-3-HF/FlixelTut/source"
+	],
+	"file_history":
+	[
+		"/Users/CorneliusHsiao/Desktop/Senior/Game Development I/Projects/GD1-2018Fall-3-HF/text.db",
+		"/Users/CorneliusHsiao/Desktop/Senior/Game Development I/Flixeltut/source/AssetPaths.hx",
+		"/Users/CorneliusHsiao/Desktop/Senior/Game Development I/Flixeltut/source/Main.hx",
+		"/Users/CorneliusHsiao/Desktop/Senior/Game Development I/Flixeltut/source/MenuState.hx",
+		"/Users/CorneliusHsiao/Desktop/Senior/Game Development I/Flixeltut/source/PlayState.hx",
+		"/Users/CorneliusHsiao/Desktop/Senior/Game Development I/Flixeltut/source/Player.hx",
+		"/Users/CorneliusHsiao/Desktop/Senior/Game Development I/Player.hx",
+		"/Users/CorneliusHsiao/Desktop/Senior/Game Development I/Player.hx.txt",
+		"/Users/CorneliusHsiao/Desktop/test.py",
+		"/Users/CorneliusHsiao/Desktop/1/p2_shade.py",
+		"/Users/CorneliusHsiao/Desktop/p1_block.py",
+		"/Users/CorneliusHsiao/Desktop/1/1_1.py",
+		"/Users/CorneliusHsiao/Desktop/Homepage/publication.html",
+		"/Users/CorneliusHsiao/Desktop/Homepage/research.html",
+		"/Users/CorneliusHsiao/Desktop/Homepage/coursework.html",
+		"/Users/CorneliusHsiao/Desktop/Homepage/index.html",
+		"/Users/CorneliusHsiao/Desktop/Junior/ComputerGraphicsProject/index.html",
+		"/Users/CorneliusHsiao/Desktop/Junior/ComputerGraphicsProject/index_files/OrbitControls.js",
+		"/Users/CorneliusHsiao/Desktop/Intro to Algorithms/Lab7/7.py",
+		"/Users/CorneliusHsiao/Desktop/Intro to Algorithms/HW8/HW8_Q1.py",
+		"/Users/CorneliusHsiao/Desktop/HW8_Q1.py",
+		"/Users/CorneliusHsiao/Desktop/6/6.py",
+		"/Users/CorneliusHsiao/Desktop/Intro to Algorithms/Lab5/5.py",
+		"/Users/CorneliusHsiao/Desktop/5.py",
+		"/Users/CorneliusHsiao/Desktop/Intro to Algorithms/Lab 4/4.py",
+		"/Users/CorneliusHsiao/Downloads/3_1.py",
+		"/Users/CorneliusHsiao/Desktop/Intro to Algorithms/Lab2/2_all.py",
+		"/Users/CorneliusHsiao/Desktop/Intro to Algorithms/Lab2/2_4.py",
+		"/Users/CorneliusHsiao/Desktop/Intro to Algorithms/Lab2/2_3.py",
+		"/Users/CorneliusHsiao/Desktop/Intro to Algorithms/Lab2/2_2.py",
+		"/Users/CorneliusHsiao/Desktop/Intro to Algorithms/Lab2/2_1.py",
+		"/Users/CorneliusHsiao/Desktop/2_1.py",
+		"/Users/CorneliusHsiao/Desktop/Intro to Algorithms/Lab1/1_2.py",
+		"/Users/CorneliusHsiao/Desktop/Intro to Algorithms/Lab1/1_1.py",
+		"/Users/CorneliusHsiao/Desktop/ComputerGraphicsProject/index_files/AudioAnalyserAndCanvasRender.js",
+		"/Users/CorneliusHsiao/Desktop/GoogleCardboardVR-AR/README.md",
+		"/Users/CorneliusHsiao/Desktop/GoogleCardboardVR-AR/Video 3/video3.json",
+		"/Users/CorneliusHsiao/Desktop/video3.json",
+		"/Users/CorneliusHsiao/Desktop/ReadMe.md",
+		"/Users/CorneliusHsiao/Desktop/GoogleCardboardVR-AR/videos/CampusDirections/map.json",
+		"/Users/CorneliusHsiao/Desktop/map.json",
+		"/Users/CorneliusHsiao/Desktop/convert.cpp",
+		"/Users/CorneliusHsiao/Desktop/test.html",
+		"/Users/CorneliusHsiao/Desktop/test.js",
+		"/Volumes/BOOTCAMP/Users/Hanyuan Xiao/Desktop/LITEC/lab3/lab 3-2/lab_3_2_Compass_2/lab3-2-electrcompass.c",
+		"/Volumes/BOOTCAMP/Users/Hanyuan Xiao/Desktop/LITEC/lab5/lab 5 V1.3/lab 5.c",
+		"/Users/CorneliusHsiao/Downloads/square_files/square.js",
+		"/Users/CorneliusHsiao/Downloads/square.htm",
+		"/Users/CorneliusHsiao/Desktop/gasket1.js",
+		"/Users/CorneliusHsiao/Desktop/gasket1.html",
+		"/Users/CorneliusHsiao/Desktop/Bluetooth_Pseudocode",
+		"/Users/CorneliusHsiao/Desktop/Data Structure/Homework/hw_2/main.cpp",
+		"/Users/CorneliusHsiao/Desktop/Data Structure/Lab/Lab 14/stop_and_copy.h",
+		"/Users/CorneliusHsiao/Desktop/Data Structure/Lab/Lab 14/stop_and_copy.cpp",
+		"/Users/CorneliusHsiao/Desktop/Data Structure/Lab/Lab 14/main_stop_and_copy.cpp",
+		"/Users/CorneliusHsiao/Desktop/Data Structure/Lab/Lab 14/ds_smart_pointers.h",
+		"/Users/CorneliusHsiao/Desktop/Data Structure/Lab/Lab 14/lab_14_check_3.cpp",
+		"/Users/CorneliusHsiao/Desktop/Data Structure/Lab/Lab 14/main_smart_pointers.cpp",
+		"/Users/CorneliusHsiao/Desktop/Data Structure/Homework/hw_10 (Final Ver.)/pokemon.cpp",
+		"/Users/CorneliusHsiao/Desktop/Data Structure/Homework/hw_10 (Final Ver.)/pokemon.h",
+		"/Users/CorneliusHsiao/Downloads/priority_queue.h",
+		"/Users/CorneliusHsiao/Desktop/Data Structure/Lab/Lab 12/superhero.h",
+		"/Users/CorneliusHsiao/Desktop/Data Structure/Lab/Lab 12/superhero.cpp",
+		"/Users/CorneliusHsiao/Desktop/Data Structure/Lab/Lab 12/team.cpp",
+		"/Users/CorneliusHsiao/Desktop/Data Structure/Lab/Lab 12/team.h",
+		"/Users/CorneliusHsiao/Desktop/Data Structure/Lab/Lab 12/main.cpp",
+		"/Users/CorneliusHsiao/Desktop/Data Structure/Lab/Lab 11/exam3.cpp",
+		"/Users/CorneliusHsiao/Desktop/Data Structure/Lab/Lab 10/test_ds_set.cpp",
+		"/Users/CorneliusHsiao/Desktop/Data Structure/Lab/Lab 10/ds_set.h",
+		"/Users/CorneliusHsiao/Desktop/Data Structure/Homework/hw_7/main.cpp",
+		"/Users/CorneliusHsiao/Desktop/Data Structure/Lab/Lab 9/lab_9_check_2.cpp",
+		"/Users/CorneliusHsiao/Desktop/Data Structure/Lab/Lab 9/lab_9_check_1.cpp",
+		"/Users/CorneliusHsiao/Desktop/lab_9_check_1.cpp",
+		"/Users/CorneliusHsiao/Desktop/Data Structure/Lab/Lab 8/check_1.cpp",
+		"/Users/CorneliusHsiao/Desktop/Data Structure/Lab/Lab 8/start.cpp",
+		"/Users/CorneliusHsiao/Desktop/Data Structure/Lab/Lab 7/lab7.cpp",
+		"/Users/CorneliusHsiao/Desktop/Data Structure/Lab/Lab 7/dslist.h",
+		"/Users/CorneliusHsiao/Desktop/Data Structure/Homework/hw_5/student_functions.cpp",
+		"/Users/CorneliusHsiao/Desktop/Data Structure/Lab/Lab 6/lab_6_check_3.cpp",
+		"/Users/CorneliusHsiao/Desktop/Data Structure/Lab/Lab 6/lab_6.cpp",
+		"/Users/CorneliusHsiao/Desktop/lab_6.cpp",
+		"/Users/CorneliusHsiao/Desktop/Data Structure/Homework/hw_4/operations.cpp",
+		"/Users/CorneliusHsiao/Dropbox/hw_4/operations.cpp",
+		"/Users/CorneliusHsiao/Desktop/Data Structure/Lab/Lab 5/vec.h",
+		"/Users/CorneliusHsiao/Desktop/Data Structure/Lab/Lab 5/test_vec.cpp",
+		"/Users/CorneliusHsiao/Desktop/Data Structure/Homework/hw_3/matrix_main.cpp",
+		"/Users/CorneliusHsiao/Desktop/Data Structure/Homework/hw_3/Matrix.h",
+		"/Users/CorneliusHsiao/Desktop/Data Structure/Homework/hw_3/Matrix.cpp",
+		"/Users/CorneliusHsiao/Desktop/Data Structure/Lab/Lab 4/test_rectangle.cpp",
+		"/Users/CorneliusHsiao/Desktop/Data Structure/Lab/Lab 4/buggy_test_rectangle.cpp",
+		"/Users/CorneliusHsiao/Desktop/Data Structure/Lab/Lab 4/Rectangle.cpp",
+		"/Users/CorneliusHsiao/Desktop/Data Structure/Lab/Lab 4/Rectangle.h",
+		"/Users/CorneliusHsiao/Desktop/Data Structure/Lab/Lab 4/Point2D.h",
+		"/Users/CorneliusHsiao/Desktop/Data Structure/Lab/Lab 3/check_3_1.cpp",
+		"/Users/CorneliusHsiao/Desktop/Data Structure/Lab/Lab 3/check_2.cpp",
+		"/Users/CorneliusHsiao/Desktop/Data Structure/Lab/Lab 2/main.cpp",
+		"/Users/CorneliusHsiao/Desktop/Data Structure/Lab/Lab 3/time.h",
+		"/Users/CorneliusHsiao/Desktop/Data Structure/Lab/Lab 3/time.cpp",
+		"/Users/CorneliusHsiao/Desktop/Data Structure/Lab/Lab 1/quadratic.cpp",
+		"/Users/CorneliusHsiao/Desktop/Data Structure/Lab/Lab 1/lab 1 check 3.cpp",
+		"/Volumes/BOOTCAMP/Users/Hanyuan Xiao/Desktop/LITEC/lab4/V1.2/lab 4 V1.2.c",
+		"/Volumes/CORNELIUS/DS/Lab/3/check3.cpp",
+		"/Users/CorneliusHsiao/Desktop/check_1.cpp",
+		"/Users/CorneliusHsiao/Desktop/Data Structure/Lab/Lab 2/time.cpp",
+		"/Users/CorneliusHsiao/Desktop/Data Structure/Lab/Lab 2/time.h",
+		"/Users/CorneliusHsiao/Desktop/main.cpp",
+		"/Users/CorneliusHsiao/Desktop/time.cpp",
+		"/Users/CorneliusHsiao/Desktop/time.h",
+		"/Users/CorneliusHsiao/Desktop/hw_1.cpp",
+		"/Users/CorneliusHsiao/Desktop/test.cpp"
+	],
+	"find":
+	{
+		"height": 26.0
+	},
+	"find_in_files":
+	{
+		"height": 101.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 26.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "FlixelTut.sublime-project",
+	"replace":
+	{
+		"height": 48.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 167.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
