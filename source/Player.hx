@@ -1,7 +1,7 @@
  package;
 
- import flixel.FlxSprite;
- import flixel.system.FlxAssets.FlxGraphicAsset;
+import flixel.FlxSprite;
+import flixel.system.FlxAssets.FlxGraphicAsset;
 import flixel.FlxG;
 import flixel.FlxG.keys;
 import flixel.math.FlxPoint;
