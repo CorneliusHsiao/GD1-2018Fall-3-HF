@@ -1,12 +1,22 @@
 -main ApplicationMain 
+<<<<<<< HEAD
+-cp /usr/local/lib/haxe/lib/flixel/4,5,0
+-D flixel=4.5.0
+=======
 -cp /usr/local/lib/haxe/lib/flixel/4,5,1
 -D flixel=4.5.1
+>>>>>>> master
 --macro openfl._internal.utils.ExtraParams.include()
 -cp /usr/local/lib/haxe/lib/openfl/8,4,1/src
 -D openfl=8.4.1
 --macro lime._internal.macros.DefineMacro.run()
 -cp /usr/local/lib/haxe/lib/lime/7,0,0/src
 -D lime=7.0.0
+<<<<<<< HEAD
+-cp /usr/local/lib/haxe/lib/flixel-addons/2,7,0
+-D flixel-addons=2.7.0
+=======
+>>>>>>> master
 -cp source
 -D lime-openal
 -D native
@@ -16,6 +26,10 @@
 -D lime-harfbuzz
 -D tools=7.0.0
 -D lime-cairo
+<<<<<<< HEAD
+-D NAPE_NO_INLINE
+=======
+>>>>>>> master
 -D FLX_NO_DEBUG
 -D lime-opengl
 -D no-compilation
