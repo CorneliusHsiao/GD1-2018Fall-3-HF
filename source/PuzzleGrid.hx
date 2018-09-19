@@ -14,8 +14,8 @@ typedef Point = {
 };
 
 class LightBeamData {
-	var didContactGem: Bool;
-	var pointList: Array<Point>;
+	public var didContactGem: Bool;
+	public var pointList: Array<Point>;
 	public function new()
 	{
 		didContactGem = false;
@@ -83,7 +83,40 @@ class PuzzleGrid
 	public function getDataForLightBeam(startX: Int, startY: Int): LightBeamData
 	{
 		var lbd = new LightBeamData();
+		var p = {x: 0, y: 0};
+		lbd.pointList.push(p);
+
 		return lbd;
+	}
+
+	public function setPositionForAllObjects()
+	{
+		for (x in 0..._width)
+		{
+			for (y in 0..._height)
+			{
+				for (obj in getObjectsAtGridLocation(x, y))
+				{
+					obj.setPosition(x * _boxSize + _offsetX, y * _boxSize + _offsetY);
+				}
+			}
+		}
+	}
+
+	public function getAllObjects(): Array<FlxSprite>
+	{
+		var allObjects: Array<FlxSprite> = new Array<FlxSprite>();
+		for (x in 0..._width)
+		{
+			for (y in 0..._height)
+			{
+				for (obj in getObjectsAtGridLocation(x, y))
+				{
+					allObjects.push(obj);
+				}
+			}
+		}
+		return allObjects;
 	}
 
 	public function new(width: Int, height: Int, boxSize: Int, offsetX: Int, offsetY: Int)
