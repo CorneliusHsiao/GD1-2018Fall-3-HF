@@ -20,7 +20,7 @@ import flixel.math.FlxPoint;
 		 width = 100; //100, 114
 		 height = 114;
 		 loadGraphic("assets/images/duck.png", true, 100, 114);
-		 animation.add("walk", [0,1,2,1,0], 10, true);
+		 animation.add("walk", [0,1,2,1,0], 30, true);
 		 drag.x = drag.y = 1600;
 		 //animation.play("walk");
 	 }

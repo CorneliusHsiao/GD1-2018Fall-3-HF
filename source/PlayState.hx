@@ -30,6 +30,7 @@ class PlayState extends FlxState
 			placeEntities(e.type, e.xmlData.x);
 		}
 		//da_player = new Player(100,100);
+		FlxG.camera.follow(da_player, NO_DEAD_ZONE, 1);
 		add(da_player);
 		super.create();
 	}
