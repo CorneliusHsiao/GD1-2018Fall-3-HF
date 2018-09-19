@@ -3,5 +3,10 @@
 *._*
 *.Spotlight-V100
 *.Trashes
+export/*
 ehthumbs.db
 Thumbs.db
+export/neko/bin/FlixelTut.app/Contents/Info.plist
+export/neko/bin/FlixelTut.app/Contents/Resources/manifest/default.json
+export/neko/haxe/ApplicationMain.hx
+export/neko/haxe/ManifestResources.hx
