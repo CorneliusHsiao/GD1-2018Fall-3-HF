@@ -23,7 +23,8 @@ class Mirror extends FlxSprite {
 	var _dir:Int = -1;
 
 	public function new(?row:Int=0, ?col:Int=0, ?dir:Int=-1) {
-		super(row, col, dir);
+		super();
+		loadGraphic("assets/images/Mirror.png", true, 32, 32);
 		_row = row;
 		_col = col;
 		_dir = dir;
