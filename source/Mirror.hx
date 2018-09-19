@@ -1,31 +1,33 @@
-package;
-
-import flixel.FlxG;
 import flixel.FlxSprite;
-import flixel.FlxState;
-import flixel.text.FlxText;
-import flixel.ui.FlxButton;
-import flixel.math.FlxMath;
+import flixel.system.FlxAssets.FlxGraphicAsset;
+import flixel.FlxG;
+import flixel.FlxG.keys;
+import flixel.FlxObject;
 
-/*
-	class Mirror
-*/
-class Mirror extends FlxSprite {
-	var _row:Int = 0;
-	var _col:Int = 0;
-	/*
-		_dir: direction of light
-		0: Upware
-		1: Downward
-		2: Leftward
-		3: Rightward
-	*/
-	var _dir:Int = -1;
-
-	public function new(?row:Int=0, ?col:Int=0, ?dir:Int=-1) {
-		super(row, col, dir);
-		_row = row;
-		_col = col;
-		_dir = dir;
+class Mirror extends FlxSprite{
+	public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset){
+		super(X, Y, SimpleGraphic);
+		moves = false;
+		immovable = true;
+		solid = true;
+		width = 26;
+		height = 26;
+		offset.set(3,3);
+		loadGraphic("assets/images/mirror.png", true, 32, 32);
+		setFacingFlip(FlxObject.DOWN, false, false);
+		setFacingFlip(FlxObject.UP, false, true);
+		facing = FlxObject.DOWN;
+	}
+ 	override public function update(elapsed:Float):Void
+ 	{
+     	super.update(elapsed);
+ 	}
+	public function flip():Void{
+		if(facing == FlxObject.DOWN){
+			facing = FlxObject.UP;
+		}
+		else if(facing == FlxObject.UP){
+			facing = FlxObject.DOWN;
+		}
 	}
 }
