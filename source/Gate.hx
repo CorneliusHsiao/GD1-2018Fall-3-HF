@@ -21,7 +21,7 @@ class Gate extends FlxSprite {
 	var _closed_img:String = null;
 	var _open_img:String = null;
 
-	public function new(?row:Int=0, ?col:Int=0, ?type:String="", ?side_length:Int=0, ?closed_img:String=null, ?open_img:String=null) {
+	public function new(?row:Int=0, ?col:Int=0, ?type:String="", ?side_length:Int=0, ?closed_img:String="", ?open_img:String="") {
 		super();
 		this._row = row;
 		this._col = col;
@@ -33,7 +33,7 @@ class Gate extends FlxSprite {
 
 		loadGraphic(this._open_img, false, _side_length, _side_length*3, true);
 		setPosition(this._col, this._row);
-		}
+	}
 
 	public function trigger() {
 		if (this._activated == false) {
@@ -46,6 +46,7 @@ class Gate extends FlxSprite {
 			this._activated = false;
 			loadGraphic(this._open_img, false, this._side_length, this._side_length*3, true);
 			setPosition(this._col, this._row);
+			trace("Warning: Gate " + this._type + " reopened.");
 		}
 	}
 }
