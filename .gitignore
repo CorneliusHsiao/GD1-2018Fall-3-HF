@@ -10,3 +10,17 @@ export/neko/bin/FlixelTut.app/Contents/Info.plist
 export/neko/bin/FlixelTut.app/Contents/Resources/manifest/default.json
 export/neko/haxe/ApplicationMain.hx
 export/neko/haxe/ManifestResources.hx
+export/neko/bin/FlixelTut.app/Contents/Info.plist
+export/neko/bin/FlixelTut.app/Contents/MacOS/FlixelTut
+export/neko/bin/FlixelTut.app/Contents/Resources/assets/data/test_map.tmx
+export/neko/bin/FlixelTut.app/Contents/Resources/assets/data/Tiles.tsx
+export/neko/bin/FlixelTut.app/Contents/Resources/assets/images/duck.png
+export/neko/bin/FlixelTut.app/Contents/Resources/assets/images/tiles.png
+export/neko/bin/FlixelTut.app/Contents/Resources/manifest/default.json
+export/neko/haxe/ApplicationMain.hx
+export/neko/haxe/debug.hxml
+export/neko/haxe/final.hxml
+export/neko/haxe/ManifestResources.hx
+export/neko/haxe/release.hxml
+export/neko/obj/ApplicationMain
+export/neko/obj/ApplicationMain.n
