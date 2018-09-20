@@ -20,7 +20,6 @@ export/neko/bin/FlixelTut.app/Contents/Resources/manifest/default.json
 export/neko/haxe/ApplicationMain.hx
 export/neko/haxe/debug.hxml
 export/neko/haxe/final.hxml
-export/neko/haxe/ManifestResources.hx
 export/neko/haxe/release.hxml
 export/neko/obj/ApplicationMain
 export/neko/obj/ApplicationMain.n

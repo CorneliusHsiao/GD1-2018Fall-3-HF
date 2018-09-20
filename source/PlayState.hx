@@ -7,7 +7,6 @@ import flixel.tile.FlxTilemap;
 import flixel.tile.FlxBaseTilemap;
 import flixel.addons.editors.tiled.*;
 
-//import InGameObjects;
 
 class PlayState extends FlxState
 {
@@ -32,21 +31,8 @@ class PlayState extends FlxState
 		//da_player = new Player(100,100);
 		FlxG.camera.follow(da_player, NO_DEAD_ZONE, 1);
 		add(da_player);
-		super.create();
-
-		var grid = new PuzzleGrid(20, 20, 32, 160, 0);
-		grid.getDataForLightBeam(0, 0);
-		var mirror = new Mirror(5, 5, 1);
-		grid.addObjectToGridLocation(5, 5, mirror);
-		add(mirror);
-		grid.setPositionForAllObjects();
 	}
-<<<<<<< HEAD
 
-
-=======
-	
->>>>>>> 2c72471cef6905dab4d7748b5b8915edaf35a141
 	override public function update(elapsed:Float):Void
 	{
 		
