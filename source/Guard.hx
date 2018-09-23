@@ -20,14 +20,14 @@ class Guard extends FlxSprite {
 	 //set to solid so it collides with other solid objects
 	 solid = true;
 	 //width and height are for actual hitbox
-	 width = 28; //100, 114
-	 height = 28;
-	 offset.set(2,2);
+	 width = 26; //100, 114
+	 height = 26;
+	 offset.set(3,3);
 	 loadGraphic("assets/images/GuardSpriteSheet.png", true, 32, 32);
-	 animation.add("go_left", [10,11,12,11], 6, true);
-	 animation.add("go_right", [7,8,9,8], 6, true);
-	 animation.add("go_up", [1,2,3,2], 6, true);
-	 animation.add("go_down", [4,5,6,5], 6, true);
+	 animation.add("go_left", [11,10,9,11], 8, true);
+	 animation.add("go_right", [6,7,8,6], 8, true);
+	 animation.add("go_up", [0,1,2,0], 8, true);
+	 animation.add("go_down", [3,4,5,3], 8, true);
 	 drag.x = drag.y = 1600;
 	 //set default facing direction
 	 facing = FlxObject.DOWN;

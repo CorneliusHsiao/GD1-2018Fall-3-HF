@@ -26,7 +26,7 @@ import haxe.macro.Expr;
 		
 		#if (js && html5)
 		#if (munit || utest)
-		lime.system.System.embed ("FlixelTut", null, 640, 480);
+		lime.system.System.embed ("FlixelTut", null, 960, 640);
 		#end
 		#else
 		create (null);
@@ -38,11 +38,7 @@ import haxe.macro.Expr;
 		
 		var config = {
 			
-<<<<<<< HEAD
-			build: "16",
-=======
-			build: "17",
->>>>>>> master
+			build: "42",
 			company: "HaxeFlixel",
 			file: "FlixelTut",
 			fps: 60,
@@ -63,7 +59,7 @@ import haxe.macro.Expr;
 					display: 0,
 					fullscreen: false,
 					hardware: true,
-					height: 480,
+					height: 640,
 					hidden: #if munit true #else false #end,
 					maximized: false,
 					minimized: false,
@@ -72,7 +68,7 @@ import haxe.macro.Expr;
 					stencilBuffer: true,
 					title: "FlixelTut",
 					vsync: false,
-					width: 640,
+					width: 960,
 					x: null,
 					y: null
 				},
@@ -96,7 +92,7 @@ import haxe.macro.Expr;
 		
 		#if (js && html5)
 		#if (munit || utest)
-		lime.system.System.embed (projectName, null, 640, 480, config);
+		lime.system.System.embed (projectName, null, 960, 640, config);
 		#end
 		#else
 		create (config);
@@ -114,11 +110,7 @@ import haxe.macro.Expr;
 		#if (lime >= "7.0.0")
 		ManifestResources.init (config);
 		
-<<<<<<< HEAD
-		app.meta["build"] = "16";
-=======
-		app.meta["build"] = "17";
->>>>>>> master
+		app.meta["build"] = "42";
 		app.meta["company"] = "HaxeFlixel";
 		app.meta["file"] = "FlixelTut";
 		app.meta["name"] = "FlixelTut";
@@ -135,14 +127,14 @@ import haxe.macro.Expr;
 			element: null,
 			frameRate: 60,
 			#if !web fullscreen: false, #end
-			height: 480,
+			height: 640,
 			hidden: #if munit true #else false #end,
 			maximized: false,
 			minimized: false,
 			parameters: {},
 			resizable: true,
 			title: "FlixelTut",
-			width: 640,
+			width: 960,
 			x: null,
 			y: null,
 			

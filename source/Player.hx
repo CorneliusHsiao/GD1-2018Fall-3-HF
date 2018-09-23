@@ -5,6 +5,8 @@ import flixel.system.FlxAssets.FlxGraphicAsset;
 import flixel.FlxG;
 import flixel.FlxG.keys;
 import flixel.math.FlxPoint;
+import flixel.FlxObject;
+
  class Player extends FlxSprite
  {
 	 //var animation_playing : Bool;
@@ -17,16 +19,31 @@ import flixel.math.FlxPoint;
 		 //set to solid so it collides with other solid objects
 		 solid = true;
 		 //width and height are for actual hitbox
-		 width = 100; //100, 114
-		 height = 114;
-		 loadGraphic("assets/images/duck.png", true, 100, 114);
-		 animation.add("walk", [0,1,2,1,0], 30, true);
+		 width = 26; //100, 114
+		 height = 26;
+		 offset.set(3,3);
+		 //temporarily using guard sprite
+		 loadGraphic("assets/images/GuardSpriteSheet.png", true, 32, 32);
+		 //loadGraphic("assets/images/GuardSpriteSheet.png", true, 32, 32);
+		 animation.add("go_left", [11,10,9,11], 8, true);
+		 animation.add("go_right", [6,7,8,6], 8, true);
+		 animation.add("go_up", [0,1,2,0], 8, true);
+		 animation.add("go_down", [3,4,5,3], 8, true);
+		 //animation.add("walk", [0,1,2,1,0], 30, true);
 		 drag.x = drag.y = 1600;
 		 //animation.play("walk");
 	 }
 	 public function play_animation():Void{
-		 //animation_playing = true;
-		 animation.play("walk");
+		 switch(facing){
+			case FlxObject.UP:
+			 	animation.play("go_up");
+			case FlxObject.DOWN:
+				animation.play("go_down");
+			case FlxObject.LEFT:
+				animation.play("go_left");
+			case FlxObject.RIGHT:
+				animation.play("go_right");
+		 }
 	 }
 	 public function end_animation():Void{
 		 //animation_playing = false;
@@ -35,23 +52,29 @@ import flixel.math.FlxPoint;
 	 function movement():Void{
  		//player movement control
  		//moving animation plays as player moves
-		if(FlxG.keys.justReleased.A){
-			flipX = false;
-		}
+		
 		var up : Bool =  false; 
 		var left : Bool =  false; 
 		var down : Bool =  false; 
 		var right : Bool =  false; 
-		up = FlxG.keys.pressed.W;
-		left = FlxG.keys.pressed.A;
-		down = FlxG.keys.pressed.S;
-		right = FlxG.keys.pressed.D;
-		if(up && down){
-			up = down = false;
+		if(FlxG.keys.pressed.W){
+			up = true;
+			facing = FlxObject.UP;
 		}
-		if(left && right){
-			left = right = false;
+		else if(FlxG.keys.pressed.A){
+			left = true;
+			facing = FlxObject.LEFT;
 		}
+		else if(FlxG.keys.pressed.S){
+			down = true;
+			facing = FlxObject.DOWN;
+		}
+		else if(FlxG.keys.pressed.D){
+			right = true;
+			facing = FlxObject.RIGHT;
+		}
+		
+		
 		var moving : Bool = (up || left || right || down);
  		if(FlxG.keys.anyJustPressed([W,A,S,D]) && moving){
  			play_animation();
@@ -62,28 +85,28 @@ import flixel.math.FlxPoint;
 		
 		//angle rotates clockwise
 		if(moving){
-			if(FlxG.keys.justPressed.A){
-				flipX = true;
-			}
-			
  			var angle : Float = 0;
 			if(up){
 				angle = 270;
+				/*
 				if(left){
 					angle -= 45;
 				}
 				else if(right){
 					angle += 45;
 				}
+				*/
 			}
 			else if(down){
 				angle = 90;
+				/*
 				if(left){
 					angle += 45;
 				}
 				else if(right){
 					angle -= 45;
 				}
+				*/
 			}
 			else if(left){
 				angle = 180;
