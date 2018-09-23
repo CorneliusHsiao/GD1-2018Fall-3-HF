@@ -47,38 +47,25 @@ class MovementAnimation
 				point2 = points[(x + 1) % times.length];
 				var dx: Float = point2.x - point1.x;
 				var dy: Float = point2.y - point1.y;
-                		//var d: Float = sqrt(dx * dx + dy * dy);
-                		//var a: Float = acos(dx / d);
-                /*
-                		if (dy <= 0)
-                		{
-                   			a = (2.0 *  Math.pi) - a;
-                		}
-				*/
-				//guard.angle = a;
 				if (dy == 0.0 && dx >= 0.0)
 				{
 					guard.facing = FlxObject.RIGHT;
-					//guard.angle = 0;
 					guard.animation.play("go_right");
 				}
-				else if (dx == 0 && dy > 0.0)
+				else if (dx == 0.0 && dy > 0.0)
 				{
 					guard.facing = FlxObject.DOWN;
-					//guard.angle = 90;
 					guard.animation.play("go_down");
 				}
-				else if (dy == 0.0 && dy < 0.0)
+				else if (dy == 0.0 && dx < 0.0)
 				{
 					guard.facing = FlxObject.LEFT;
-					//guard.angle = 180;
 					guard.animation.play("go_left");
 				}
-				else if (dx == 0 && dy < 0.0)
+				else if (dx == 0.0 && dy < 0.0)
 				{
-					guard.facing = FlxObject.RIGHT;
-					//guard.angle = 270;
-					guard.animation.play("go_right");
+					guard.facing = FlxObject.UP;
+					guard.animation.play("go_up");
 				}
 				else
 				{
