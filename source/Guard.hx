@@ -6,12 +6,14 @@ import flixel.FlxG;
 import flixel.FlxG.keys;
 import flixel.math.FlxPoint;
 import flixel.FlxObject;
+import flixel.util.*;
 
 /*
 	class Guard
 */
 class Guard extends FlxSprite {
 	public var speed : Float = 300;
+	public var movementAnimation: MovementAnimation;
 
     public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset)
     {
@@ -28,10 +30,26 @@ class Guard extends FlxSprite {
 	 animation.add("go_right", [6,7,8,6], 8, true);
 	 animation.add("go_up", [0,1,2,0], 8, true);
 	 animation.add("go_down", [3,4,5,3], 8, true);
-	 drag.x = drag.y = 1600;
+	 //drag.x = drag.y = 1600;
 	 //set default facing direction
 	 facing = FlxObject.DOWN;
 	 //animation.play("walk");
+	var tempPoints = new Array<FlxPoint>();
+	tempPoints.push(new FlxPoint(0, 0));
+	tempPoints.push(new FlxPoint(100, 0));
+	tempPoints.push(new FlxPoint(100, 100));
+	tempPoints.push(new FlxPoint(0, 100));
+
+	var tempTimes = new Array<Float>();
+	tempTimes.push(1.3);
+	tempTimes.push(1.4);
+	tempTimes.push(1.5);
+	tempTimes.push(1.2);
+	
+	movementAnimation = new MovementAnimation(tempPoints, tempTimes); 
+	//FlxG.debugger.visible = true;
+	//trace("hello");
+	//this.path = new FlxPath().start(tempPoints, 50, FlxPath.FORWARD);
  	}
 	//basic movement, assuming guard moves all the time and
 	//moves in the direction it faces
@@ -56,7 +74,9 @@ class Guard extends FlxSprite {
 		velocity.rotate(FlxPoint.weak(0, 0), angle);
 	}
 	override public function update(elapsed:Float):Void{
-		movement();
+		//movement();
+		movementAnimation.updateTime(elapsed);
+		movementAnimation.setPositionAndDirection(this);
 		super.update(elapsed);
 	}
 	

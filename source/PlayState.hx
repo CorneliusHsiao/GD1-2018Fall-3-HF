@@ -72,9 +72,11 @@ class PlayState extends FlxState
 		
 		//da_player = new Player(100,100);
 		FlxG.camera.follow(da_player, NO_DEAD_ZONE, 1);
-		add(guards);
+		//add(guards);
 		add(mirrors);
 		add(da_player);
+		guards.add(new Guard(0, 0));
+		add(guards);
 	}
 
 	override public function update(elapsed:Float):Void
@@ -105,8 +107,14 @@ class PlayState extends FlxState
 		FlxG.overlap(da_player, mirrors, playerTouchMirror);
 		
 		
-		
+		for (guard in guards)
+		{
+			guard.update(elapsed);
+		}
 		super.update(elapsed);
+
+		
+
 	}
 	function placeEntities(entityName:String, entityData:Xml):Void
 	{
@@ -116,16 +124,19 @@ class PlayState extends FlxState
 		 // the player item should be named player
 		 // same for mirror and guard items
 		 
-	     if (entityName == "player")
-	     {
-	         da_player.x = x;
-	         da_player.y = y;
-		 }
-		 else if(entityName == "mirror"){
-			 mirrors.add(new Mirror(x, y));
-		 }
-		 else if(entityName == "guard"){
-			 guards.add(new Guard(x, y));
+	     	if (entityName == "player")
+	     	{
+	     	    da_player.x = x;
+	     	    da_player.y = y;
+	     	}
+		else if(entityName == "mirror"){
+			mirrors.add(new Mirror(x, y));
+		}
+		else if(entityName == "guard"){
+			var g = new Guard(x, y);
+			g.setPosition(20, 20);
+			guards.add(g);
+	
 		 }
 	}
 	function playerTouchGuard(p : Player, g : Guard):Void{
