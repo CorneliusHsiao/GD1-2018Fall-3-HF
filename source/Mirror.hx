@@ -14,8 +14,20 @@ class Mirror extends FlxSprite{
 		height = 26;
 		offset.set(3,3);
 		loadGraphic("assets/images/Mirror.png", true, 32, 32);
+		
+		//this segment of code flips the image as the 
+		//direction that the object faces change
+		
+		//the mirror should only have two states like "/" and "\"
+		//so I'm assuming it only faces upwards or downwards
+		
+		//the facing variable can also be used to define the state (orientation)
+		//of the mirror
+		
 		setFacingFlip(FlxObject.DOWN, false, false);
 		setFacingFlip(FlxObject.UP, false, true);
+		
+		
 		facing = FlxObject.DOWN;
 	}
  	override public function update(elapsed:Float):Void
@@ -23,6 +35,9 @@ class Mirror extends FlxSprite{
      	super.update(elapsed);
  	}
 	public function flip():Void{
+		
+		//This segment of code only modifies the facing variable
+		
 		if(facing == FlxObject.DOWN){
 			facing = FlxObject.UP;
 		}

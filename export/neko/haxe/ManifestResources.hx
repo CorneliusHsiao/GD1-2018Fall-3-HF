@@ -95,7 +95,6 @@ null
 @:keep @:bind #if display private #end class __ASSET__assets_images_guardspritesheetup_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_guardspritesheetdown_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_guardspritesheet_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
-@:keep @:bind #if display private #end class __ASSET__assets_images_playersprites_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_guardspritesheetleft_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_museumfloor_tsx extends null { }
 @:keep @:bind #if display private #end class __ASSET__assets_images_mirror_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
