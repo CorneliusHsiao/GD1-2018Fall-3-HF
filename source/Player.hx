@@ -59,26 +59,24 @@ import flixel.FlxObject;
 		var right : Bool =  false; 
 		if(FlxG.keys.pressed.W){
 			up = true;
-			facing = FlxObject.UP;
+			
 		}
 		else if(FlxG.keys.pressed.A){
 			left = true;
-			facing = FlxObject.LEFT;
+			
 		}
 		else if(FlxG.keys.pressed.S){
 			down = true;
-			facing = FlxObject.DOWN;
+			
 		}
 		else if(FlxG.keys.pressed.D){
 			right = true;
-			facing = FlxObject.RIGHT;
+			
 		}
 		
 		
 		var moving : Bool = (up || left || right || down);
- 		if(FlxG.keys.anyJustPressed([W,A,S,D]) && moving){
- 			play_animation();
- 		}
+ 		
  		if(!moving){
  			end_animation();
  		}
@@ -88,32 +86,21 @@ import flixel.FlxObject;
  			var angle : Float = 0;
 			if(up){
 				angle = 270;
-				/*
-				if(left){
-					angle -= 45;
-				}
-				else if(right){
-					angle += 45;
-				}
-				*/
+				facing = FlxObject.UP;
 			}
 			else if(down){
 				angle = 90;
-				/*
-				if(left){
-					angle += 45;
-				}
-				else if(right){
-					angle -= 45;
-				}
-				*/
+				facing = FlxObject.DOWN;
 			}
 			else if(left){
 				angle = 180;
+				facing = FlxObject.LEFT;
 			}
 			else if(right){
 				angle = 0;
+				facing = FlxObject.RIGHT;
 			}
+			play_animation();
 			velocity.set(speed, 0);
 			velocity.rotate(FlxPoint.weak(0, 0), angle);
 		}
