@@ -56,19 +56,21 @@ class PlayState extends FlxState
 			would cause runtime exceptions
 		
 			should work fine w/ maps having those two layers
-			
+		*/	
 		// reading position of mirrors
 		var tmpMap_m : TiledObjectLayer = cast da_map.getLayer("mirrors");
 		for(e in tmpMap_m.objects){
 			placeEntities(e.type, e.xmlData.x);
 		}
+		
+		/*
 		//position of guards
 		var tmpMap_g : TiledObjectLayer = cast da_map.getLayer("guards");
 		for(e in tmpMap_g.objects){
 			placeEntities(e.type, e.xmlData.x);
 		}
-		
 		*/
+		
 		
 		//da_player = new Player(100,100);
 		FlxG.camera.follow(da_player, NO_DEAD_ZONE, 1);
@@ -86,6 +88,7 @@ class PlayState extends FlxState
 		if(FlxG.keys.pressed.ESCAPE){
 			FlxG.switchState(new MenuState());
 		}
+		
 		//collide detection
 		//player hits wall
 		FlxG.collide(da_player, da_walls);
@@ -93,24 +96,19 @@ class PlayState extends FlxState
 		FlxG.collide(guards, da_walls);
 		//player hits guards
 		FlxG.collide(da_player, guards);
+		FlxG.overlap(da_player, guards, playerTouchGuard);
 		//player hits mirrors
-		FlxG.collide(da_player, mirrors);
+		FlxG.overlap(da_player, mirrors, playerTouchMirror);
+		//FlxG.collide(da_player, mirrors);
+		
 		//guard hit mirrors (?)
 		FlxG.collide(guards, mirrors);
-		
-		//executes playerTouchGuard if player touches (caught) by guards
-		
-		FlxG.overlap(da_player, guards, playerTouchGuard);
-		
-		//same as above
-		
-		FlxG.overlap(da_player, mirrors, playerTouchMirror);
-		
 		
 		for (guard in guards)
 		{
 			guard.update(elapsed);
 		}
+		
 		super.update(elapsed);
 
 		
@@ -124,11 +122,11 @@ class PlayState extends FlxState
 		 // the player item should be named player
 		 // same for mirror and guard items
 		 
-	     	if (entityName == "player")
-	     	{
-	     	    da_player.x = x;
-	     	    da_player.y = y;
-	     	}
+	    if (entityName == "player")
+	    {
+	        da_player.x = x;
+	        da_player.y = y;
+	    }
 		else if(entityName == "mirror"){
 			mirrors.add(new Mirror(x, y));
 		}
@@ -137,13 +135,21 @@ class PlayState extends FlxState
 			g.setPosition(20, 20);
 			guards.add(g);
 	
-		 }
+		}
+		else if(entityName == "case"){
+			//add case and gem
+		}
 	}
 	function playerTouchGuard(p : Player, g : Guard):Void{
 		//something happens
 	}
 	function playerTouchMirror(p : Player, m : Mirror):Void{
-		m.flip();
+		if(FlxG.keys.justPressed.SPACE){
+			m.flip();
+		}
+		FlxObject.separate(p, m);
+			//m.update();
+			//}
 	}
 }
 	

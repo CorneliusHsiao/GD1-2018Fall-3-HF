@@ -10,9 +10,9 @@ class Mirror extends FlxSprite{
 		moves = false;
 		immovable = true;
 		solid = true;
-		width = 26;
-		height = 26;
-		offset.set(3,3);
+		width = 32;
+		height = 32;
+		//offset.set(3,3);
 		loadGraphic("assets/images/Mirror.png", true, 32, 32);
 		
 		//this segment of code flips the image as the 
@@ -24,8 +24,8 @@ class Mirror extends FlxSprite{
 		//the facing variable can also be used to define the state (orientation)
 		//of the mirror
 		
-		setFacingFlip(FlxObject.DOWN, false, false);
-		setFacingFlip(FlxObject.UP, false, true);
+		setFacingFlip(FlxObject.DOWN, false, true);
+		setFacingFlip(FlxObject.UP, false, false);
 		
 		
 		facing = FlxObject.DOWN;

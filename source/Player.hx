@@ -19,16 +19,17 @@ import flixel.FlxObject;
 		 //set to solid so it collides with other solid objects
 		 solid = true;
 		 //width and height are for actual hitbox
-		 width = 26; //100, 114
-		 height = 26;
-		 offset.set(3,3);
+		 width = 30; //100, 114
+		 height = 30;
+		 offset.set(1,1);
 		 //temporarily using guard sprite
-		 loadGraphic("assets/images/GuardSpriteSheet.png", true, 32, 32);
+		 loadGraphic("assets/images/PlayerWalkInteract.png", true, 32, 32);
 		 //loadGraphic("assets/images/GuardSpriteSheet.png", true, 32, 32);
-		 animation.add("go_left", [11,10,9,11], 8, true);
+		 animation.add("go_left", [11,9,10,11], 8, true);
 		 animation.add("go_right", [6,7,8,6], 8, true);
 		 animation.add("go_up", [0,1,2,0], 8, true);
-		 animation.add("go_down", [3,4,5,3], 8, true);
+		 animation.add("go_down", [5,3,4,5], 8, true);
+		 animation.add("interact", [12,13,12], 3, false);
 		 //animation.add("walk", [0,1,2,1,0], 30, true);
 		 drag.x = drag.y = 1600;
 		 //animation.play("walk");
