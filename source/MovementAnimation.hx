@@ -30,7 +30,6 @@ class MovementAnimation
 	public function updateTime(elapsed:Float): Void
 	{
 		currentTime = (currentTime + elapsed) % totalTime;
-trace(currentTime);
 	}
 
 	public function setPositionAndDirection(guard: Guard): Void
