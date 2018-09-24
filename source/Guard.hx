@@ -42,9 +42,9 @@ class Guard extends FlxSprite {
 
 	var tempTimes = new Array<Float>();
 	tempTimes.push(1.0);
-	tempTimes.push(0.5);
 	tempTimes.push(1.0);
-	tempTimes.push(0.5);
+	tempTimes.push(1.0);
+	tempTimes.push(1.0);
 	
 	movementAnimation = new MovementAnimation(tempPoints, tempTimes); 
 	//FlxG.debugger.visible = true;

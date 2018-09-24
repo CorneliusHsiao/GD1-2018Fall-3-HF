@@ -30,19 +30,20 @@ class MovementAnimation
 	public function updateTime(elapsed:Float): Void
 	{
 		currentTime = (currentTime + elapsed) % totalTime;
+trace(currentTime);
 	}
 
 	public function setPositionAndDirection(guard: Guard): Void
 	{
 		var point1: FlxPoint;
 		var point2: FlxPoint;
-		var timeForPoint1: Float = 0.0;
+		var integralTime: Float = 0.0;
 		var timeToNextPoint: Float = 0.0;
 		for (x in 0 ... times.length)
 		{
-			if (times[(x + 1) % times.length] + timeForPoint1 > currentTime)
+			timeToNextPoint = times[(x) % times.length];
+			if (timeToNextPoint + integralTime > currentTime)
 			{
-				timeToNextPoint = times[(x + 1) % times.length];
 				point1 = points[(x) % times.length];
 				point2 = points[(x + 1) % times.length];
 				var dx: Float = point2.x - point1.x;
@@ -72,18 +73,16 @@ class MovementAnimation
 					//something is wrong.				
 				}
 			
-				var percent: Float = (currentTime - timeForPoint1) / timeToNextPoint;
+				var percent: Float = (currentTime - integralTime) / timeToNextPoint;
 				var newX: Float = (point2.x * percent) + (point1.x * (1 - percent));
 				var newY: Float = (point2.y * percent) + (point1.y * (1 - percent));
-								
-
 				guard.setPosition(newX, newY);
 				return;
 
 			}
 			else
 			{
-				timeForPoint1 += times[x];
+				integralTime += times[x];
 			}
 		}
 	}
