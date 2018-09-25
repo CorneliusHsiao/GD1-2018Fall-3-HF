@@ -18,6 +18,9 @@ class PlayState extends FlxState
 	var mirrors : FlxTypedGroup<Mirror>;
 	var pg = new PuzzleGrid(32, 32, 32, 0, 0);
 	var gemActivated = false;
+	var target : Target;
+	var entrance : Gate;
+	var exit : Gate;
 	override public function create():Void
 	{
 		guards = new FlxTypedGroup<Guard>();
@@ -25,6 +28,10 @@ class PlayState extends FlxState
 		da_player = new Player();
 		da_map = new TiledMap(AssetPaths.TestMap2__tmx);
 		da_walls = new FlxTilemap();
+		// *** 1 *** Set position of Target, Entrance and Exit
+		target = new Target(550,260,32,"assets/images/Crystal.png");
+		entrance = new Gate(200,-160,"Entrance",32,"assets/images/GateOpen.png","assets/images/GateClose.png");
+		exit = new Gate(500,870,"Exit",32,"assets/images/GateClose.png","assets/images/GateOpen.png");
 		
 		// we put "Layer1" in the getLayer function because the map(wall & floor) layer in
 		// test map is named "Layer1". 
@@ -85,6 +92,9 @@ class PlayState extends FlxState
 		add(mirrors);
 		add(da_player);
 		add(guards);
+		add(target);
+		add(entrance);
+		add(exit);
 	}
 
 	override public function update(elapsed:Float):Void
@@ -114,6 +124,18 @@ class PlayState extends FlxState
 		
 		//guard hit mirrors (?)
 		FlxG.collide(guards, mirrors);
+
+		// Player hits Target
+		FlxG.overlap(da_player, target, playerTouchTarget);
+		if (target.getActivateExitFlag()) {
+			exit.activate();
+		}
+
+		// Player hits Entrance
+		FlxG.overlap(da_player, entrance, playerTouchEntrance);
+
+		// Player hits Exit
+		FlxG.overlap(da_player, exit, playerTouchExit);
 		
 		for (guard in guards)
 		{
@@ -122,7 +144,10 @@ class PlayState extends FlxState
 		
 		super.update(elapsed);
 
-		
+		// Maintain positions of Target, Entrance, and Exit
+		target.updatePosition();
+		entrance.updatePosition();
+		exit.updatePosition();
 
 	}
 	function placeEntities(entityName:String, entityData:Xml):Void
@@ -154,7 +179,7 @@ class PlayState extends FlxState
 		}
 	}
 	function playerTouchGuard(p : Player, g : Guard):Void{
-		//something happens
+		FlxG.switchState(new LoseState());
 	}
 	function playerTouchMirror(p : Player, m : Mirror):Void{
 		if(FlxG.keys.justPressed.SPACE){
@@ -166,6 +191,45 @@ class PlayState extends FlxState
 			}
 		}
 		FlxObject.separate(p, m);
+	}
+	function playerTouchTarget(p : Player, t : Target):Bool{
+		t.setActivationStatus(true);
+		if (t.getActivationStatus()) {
+			// Hide Target (still reusable at stage)
+			t.kill();
+			// Set flag to activate Exit
+			t.setActivateExitFlag(true);
+			// returned value will activate Exit in Update function
+			return true;
+		}
+		else {
+			FlxObject.separate(p, t);
+			// Maintain position of Target
+			t.updatePosition();
+			return false;
+		}
+	}
+	function playerTouchExit(p : Player, g : Gate):Void{
+		if (g.getActivationStatus()) {
+			FlxG.switchState(new WinState());
+		}
+		else {
+			FlxObject.separate(p, g);
+			// Maintain position of Gate
+			g.updatePosition();
+		}
+	}
+	function playerTouchEntrance(p : Player, g : Gate):Void{
+		if (g.getActivationStatus()) {
+			FlxObject.separate(p, g);
+			// Maintain position of Gate
+			g.updatePosition();
+		}
+		else {
+			g.activate();
+			// Maintain position of Gate
+			g.updatePosition();
+		}
 	}
 //UNCOMMENT WHEN WE HAVE A GEM CLASS
 /*
