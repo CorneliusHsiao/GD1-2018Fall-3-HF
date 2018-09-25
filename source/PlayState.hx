@@ -7,7 +7,7 @@ import flixel.tile.FlxTilemap;
 import flixel.tile.FlxBaseTilemap;
 import flixel.addons.editors.tiled.*;
 import flixel.group.FlxGroup;
-
+import flixel.math.FlxPoint;
 
 class PlayState extends FlxState
 {
@@ -39,6 +39,8 @@ class PlayState extends FlxState
 		}
 		//da_walls.setTileProperties(2, FlxObject.NONE);
 		//da_walls.setTileProperties(3, FlxObject.ANY);	
+		
+		da_walls.offset.set(128, 0);
 		add(da_walls);
 		
 		// make sure player, mirrors and guards have their own layers,
