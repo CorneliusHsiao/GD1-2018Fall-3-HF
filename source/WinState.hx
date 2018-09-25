@@ -18,6 +18,7 @@ class WinState extends FlxState
 		add(_playButton);
 		_winImage = new FlxSprite();
 		_winImage.loadGraphic("assets/images/YouWin.png", false, 600, 300, true);
+		add(_winImage);
 		super.create();
 	}
 

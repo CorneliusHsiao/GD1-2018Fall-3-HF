@@ -10,12 +10,15 @@ import flixel.FlxObject;
 class LoseState extends FlxState
 {
 	var _playButton : FlxButton;
+	var _loseImage : FlxSprite;
 	
 	override public function create():Void
 	{
 		_playButton = new FlxButton(20,20,"Play Again", clickPlay);
 		add(_playButton);
-		loadGraphic("assets/images/YouLose.png", false, 600, 300, true);
+		_loseImage = new FlxSprite();
+		_loseImage.loadGraphic("assets/images/YouLose.png", false, 600, 300, true);
+		add(_loseImage);
 		super.create();
 	}
 
