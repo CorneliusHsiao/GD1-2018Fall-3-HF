@@ -8,6 +8,7 @@ import flixel.tile.FlxBaseTilemap;
 import flixel.addons.editors.tiled.*;
 import flixel.group.FlxGroup;
 import flixel.math.FlxPoint;
+import flixel.util.FlxColor;
 
 class PlayStateLv1 extends FlxState
 {
@@ -23,6 +24,9 @@ class PlayStateLv1 extends FlxState
 	var exit : Gate;
 	override public function create():Void
 	{
+		// Scene Fade-in Animation
+		FlxG.camera.fade(FlxColor.BLACK, .33, true);
+
 		guards = new FlxTypedGroup<Guard>();
 		mirrors = new FlxTypedGroup<Mirror>();
 		da_player = new Player();
@@ -178,7 +182,10 @@ class PlayStateLv1 extends FlxState
 		}
 	}
 	function playerTouchGuard(p : Player, g : Guard):Void{
-		FlxG.switchState(new LoseState());
+		// Scene Fade-out animation
+		FlxG.camera.fade(FlxColor.BLACK,.33, false, function() {
+		    FlxG.switchState(new LoseState());
+		});
 	}
 	function playerTouchMirror(p : Player, m : Mirror):Void{
 		if(FlxG.keys.justPressed.SPACE){
@@ -209,7 +216,11 @@ class PlayStateLv1 extends FlxState
 	}
 	function playerTouchExit(p : Player, g : Gate):Void{
 		if (g.getActivationStatus()) {
-			FlxG.switchState(new PlayStateLv2());
+			// Scene Fade-out animation
+			FlxG.camera.fade(FlxColor.BLACK,.33, false, function() {
+			    FlxG.switchState(new PlayStateLv2());
+			});
+			//FlxG.switchState(new PlayStateLv2());
 		}
 		else {
 			FlxObject.separate(p, g);
