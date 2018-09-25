@@ -9,7 +9,7 @@ import flixel.addons.editors.tiled.*;
 import flixel.group.FlxGroup;
 import flixel.math.FlxPoint;
 
-class PlayState extends FlxState
+class PlayStateLv1 extends FlxState
 {
 	var da_player : Player;
 	var da_map : TiledMap;
@@ -209,7 +209,7 @@ class PlayState extends FlxState
 	}
 	function playerTouchExit(p : Player, g : Gate):Void{
 		if (g.getActivationStatus()) {
-			FlxG.switchState(new WinState());
+			FlxG.switchState(new PlayStateLv2());
 		}
 		else {
 			FlxObject.separate(p, g);
