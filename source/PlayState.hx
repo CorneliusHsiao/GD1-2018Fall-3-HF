@@ -30,8 +30,8 @@ class PlayState extends FlxState
 		da_walls = new FlxTilemap();
 		// *** 1 *** Set position of Target, Entrance and Exit
 		target = new Target(550,260,32,"assets/images/Crystal.png");
-		entrance = new Gate(200,-160,"Entrance",32,"assets/images/GateOpen.png","assets/images/GateClose.png");
-		exit = new Gate(500,870,"Exit",32,"assets/images/GateClose.png","assets/images/GateOpen.png");
+		entrance = new Gate(200,-160,"Entrance",32,"assets/images/EntranceOpen.png","assets/images/EntranceClose.png");
+		exit = new Gate(500,870,"Exit",32,"assets/images/ExitClose.png","assets/images/ExitOpen.png");
 		
 		// we put "Layer1" in the getLayer function because the map(wall & floor) layer in
 		// test map is named "Layer1". 
@@ -119,9 +119,6 @@ class PlayState extends FlxState
 		//player hits mirrors
 		FlxG.overlap(da_player, mirrors, playerTouchMirror);
 		
-		//USE WHEN WE HAVE GEM CLASS
-		//FlxG.overlap(da_player, gem, playerTouchGem);
-		
 		//guard hit mirrors (?)
 		FlxG.collide(guards, mirrors);
 
@@ -148,6 +145,8 @@ class PlayState extends FlxState
 		target.updatePosition();
 		entrance.updatePosition();
 		exit.updatePosition();
+		// Update activation status of target from gemActivated
+		target.setActivationStatus(gemActivated);
 
 	}
 	function placeEntities(entityName:String, entityData:Xml):Void
@@ -193,8 +192,6 @@ class PlayState extends FlxState
 		FlxObject.separate(p, m);
 	}
 	function playerTouchTarget(p : Player, t : Target):Bool{
-		// *** 2 *** Call to activate Target so it will become collectable
-		t.setActivationStatus(true);
 		if (t.getActivationStatus()) {
 			// Hide Target (still reusable at stage)
 			t.kill();
@@ -232,16 +229,6 @@ class PlayState extends FlxState
 			g.updatePosition();
 		}
 	}
-//UNCOMMENT WHEN WE HAVE A GEM CLASS
-/*
-	function playerTouchGem(p: Player, g: Gem): Void
-	{
-		if (gemActivated)
-		{
-			//gem is removed from game board and the exit gate opens
-		}
-	}
-*/
 }
 	
 
