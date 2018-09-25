@@ -16,10 +16,12 @@ class PlayState extends FlxState
     var da_walls : FlxTilemap;
 	var guards : FlxTypedGroup<Guard>;
 	var mirrors : FlxTypedGroup<Mirror>;
+	var target : Target;
 	override public function create():Void
 	{
 		guards = new FlxTypedGroup<Guard>();
 		mirrors = new FlxTypedGroup<Mirror>();
+		target = new Target(5, 6, 5, "assets/images/Crystal.png", "assets/images/TmpActivatedTarget.jpg");
 		da_player = new Player();
 		da_map = new TiledMap(AssetPaths.test_map__tmx);
 		da_walls = new FlxTilemap();
@@ -33,7 +35,7 @@ class PlayState extends FlxState
 		   da_map.width, da_map.height, AssetPaths.tiles__png, da_map.tileWidth, da_map.tileHeight, 1,1,3);
 		da_walls.follow();
 		da_walls.setTileProperties(2, FlxObject.NONE);
-		da_walls.setTileProperties(3, FlxObject.ANY);	
+		da_walls.setTileProperties(3, FlxObject.ANY);
 		add(da_walls);
 		
 		// make sure player, mirrors and guards have their own layers,
@@ -47,10 +49,7 @@ class PlayState extends FlxState
 			placeEntities(e.type, e.xmlData.x);
 		}
 		
-		
-		
 		/* 
-		
 			commented out this part because the test map doesn't have
 			mirror and guard layers, and attempting to read those layers
 			would cause runtime exceptions
@@ -62,7 +61,13 @@ class PlayState extends FlxState
 		for(e in tmpMap_m.objects){
 			placeEntities(e.type, e.xmlData.x);
 		}
-		
+
+		// reading position of target
+		var tmpMap_m : TiledObjectLayer = cast da_map.getLayer("target");
+		for(e in tmpMap_m.objects){
+			placeEntities(e.type, e.xmlData.x);
+		}
+
 		/*
 		//position of guards
 		var tmpMap_g : TiledObjectLayer = cast da_map.getLayer("guards");
@@ -79,6 +84,7 @@ class PlayState extends FlxState
 		add(da_player);
 		guards.add(new Guard(0, 0));
 		add(guards);
+		add(target);
 	}
 
 	override public function update(elapsed:Float):Void
@@ -100,6 +106,16 @@ class PlayState extends FlxState
 		//player hits mirrors
 		FlxG.overlap(da_player, mirrors, playerTouchMirror);
 		//FlxG.collide(da_player, mirrors);
+		// guards hit target
+		FlxG.collide(guards, target);
+		/*
+			Player hits target
+
+			When player hits target, check if the target is activated (i.e. light hits target).
+			If yes, target should disappear and notify that the player wins.
+			If no, simple collision detection.
+		*/
+		//FlxG.collide(da_player, target, playerTouchTarget);
 		
 		//guard hit mirrors (?)
 		FlxG.collide(guards, mirrors);
@@ -142,6 +158,9 @@ class PlayState extends FlxState
 	}
 	function playerTouchGuard(p : Player, g : Guard):Void{
 		//something happens
+
+		// Switch to LoseState
+		// FlxG.switchState(new LoseState());
 	}
 	function playerTouchMirror(p : Player, m : Mirror):Void{
 		if(FlxG.keys.justPressed.SPACE){
@@ -150,6 +169,14 @@ class PlayState extends FlxState
 		FlxObject.separate(p, m);
 			//m.update();
 			//}
+	}
+	function playerTouchTarget(p : Player, t: Target):Void{
+		if (t.getActivationStatus()) {
+			FlxG.switchState(new WinState());
+		}
+		else {
+			FlxObject.separate(p, t);
+		}
 	}
 }
 	
