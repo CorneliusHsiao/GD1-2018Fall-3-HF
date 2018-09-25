@@ -6,20 +6,16 @@ import flixel.FlxState;
 import flixel.text.FlxText;
 import flixel.ui.FlxButton;
 import flixel.math.FlxMath;
-
-
-typedef Point = {
-	x: Int,
-	y: Int
-};
+import flixel.FlxObject;
+import flixel.math.*;
 
 class LightBeamData {
 	public var didContactGem: Bool;
-	public var pointList: Array<Point>;
+	public var pointList: Array<FlxPoint>;
 	public function new()
 	{
 		didContactGem = false;
-		pointList = new Array<Point>();
+		pointList = new Array<FlxPoint>();
 	}
 }
 
@@ -80,11 +76,89 @@ class PuzzleGrid
 		return false;
 	}
 
-	public function getDataForLightBeam(startX: Int, startY: Int): LightBeamData
+    public function getDataForLightBeam(startX: Int, startY: Int, endX: Int, endY: Int, direction: Int): LightBeamData
 	{
+		var RIGHT = 0;
+		var DOWN = 1;
+		var LEFT = 2;
+		var UP = 3;
+		var currentDirection = direction;
+		var currentX = startX;
+		var currentY = startY;
+		var dx = 0;
+		var dy = 0;
 		var lbd = new LightBeamData();
-		var p = {x: 0, y: 0};
+		var p = new FlxPoint(startX, startY);
 		lbd.pointList.push(p);
+
+
+		while (true)
+		{
+			if (currentDirection == UP)
+			{
+				dx = 0;
+				dy = -1; // not a mistake
+			}
+			if (currentDirection == DOWN)
+			{
+				dx = 0;
+				dy = 1; // not a mistake
+			}
+			if (currentDirection == LEFT)
+			{
+				dx = -1;
+				dy = 0;
+			}
+			if (currentDirection == RIGHT)
+			{
+				dx = 1;
+				dy = 0;
+			}
+
+			if (currentX + dx >= _width || currentY + dy >= _height || currentX + dx < 0 || currentY + dy < 0)
+			{
+				break;
+			}
+			else
+			{
+				currentX += dx;
+				currentY += dy;
+				trace("at " + currentX + " " + currentY);
+
+				lbd.pointList.push(new FlxPoint(currentX, currentY));
+				
+				if (currentY == endY && currentX == endX)
+				{
+					lbd.didContactGem = true;
+					break;
+				}
+
+				if (!isGridSpaceEmpty(currentX, currentY))
+				{
+					trace("found mirror");
+					if (getObjectsAtGridLocation(currentX, currentY)[0].facing == FlxObject.DOWN)
+					{
+						if (currentDirection % 2 == 0)
+						{
+							currentDirection += 1;
+						}
+						else
+						{
+							currentDirection -= 1;
+						}
+					}
+					else
+					{
+						currentDirection = 3 - currentDirection;
+					}
+				}
+				else
+				{
+					trace("mirror no found");
+				}
+			}
+		}
+
 
 		return lbd;
 	}

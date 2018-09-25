@@ -23,3 +23,4 @@ export/neko/haxe/final.hxml
 export/neko/haxe/release.hxml
 export/neko/obj/ApplicationMain
 export/neko/obj/ApplicationMain.n
+*.ini
