@@ -21,7 +21,7 @@ class PlayState extends FlxState
 		guards = new FlxTypedGroup<Guard>();
 		mirrors = new FlxTypedGroup<Mirror>();
 		da_player = new Player();
-		da_map = new TiledMap(AssetPaths.test_map__tmx);
+		da_map = new TiledMap(AssetPaths.TestMap2__tmx);
 		da_walls = new FlxTilemap();
 		
 		// we put "Layer1" in the getLayer function because the map(wall & floor) layer in
@@ -30,10 +30,13 @@ class PlayState extends FlxState
 		// should be changed if the map layer have another name.
 		
 		da_walls.loadMapFromArray(cast(da_map.getLayer("Layer1"), TiledTileLayer).tileArray,
-		   da_map.width, da_map.height, AssetPaths.tiles__png, da_map.tileWidth, da_map.tileHeight, 1,1,3);
+		   da_map.width, da_map.height, AssetPaths.MapTileSet__png, da_map.tileWidth, da_map.tileHeight, 1,1,16);
 		da_walls.follow();
-		da_walls.setTileProperties(2, FlxObject.NONE);
-		da_walls.setTileProperties(3, FlxObject.ANY);	
+		for(i in 1...12){
+			da_walls.setTileProperties(i, FlxObject.NONE);
+		}
+		//da_walls.setTileProperties(2, FlxObject.NONE);
+		//da_walls.setTileProperties(3, FlxObject.ANY);	
 		add(da_walls);
 		
 		// make sure player, mirrors and guards have their own layers,
