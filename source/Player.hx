@@ -33,6 +33,8 @@ import flixel.FlxObject;
 		 //animation.add("walk", [0,1,2,1,0], 30, true);
 		 drag.x = drag.y = 1600;
 		 //animation.play("walk");
+		setGraphicSize(64, 64);
+		updateHitbox();
 	 }
 	 public function play_animation():Void{
 		 switch(facing){

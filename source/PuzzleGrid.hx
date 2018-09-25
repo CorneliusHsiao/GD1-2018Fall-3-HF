@@ -123,7 +123,6 @@ class PuzzleGrid
 			{
 				currentX += dx;
 				currentY += dy;
-				trace("at " + currentX + " " + currentY);
 
 				lbd.pointList.push(new FlxPoint(currentX, currentY));
 				
@@ -135,7 +134,7 @@ class PuzzleGrid
 
 				if (!isGridSpaceEmpty(currentX, currentY))
 				{
-					trace("found mirror");
+					//the magic reflection formula.
 					if (getObjectsAtGridLocation(currentX, currentY)[0].facing == FlxObject.DOWN)
 					{
 						if (currentDirection % 2 == 0)
@@ -154,7 +153,6 @@ class PuzzleGrid
 				}
 				else
 				{
-					trace("mirror no found");
 				}
 			}
 		}

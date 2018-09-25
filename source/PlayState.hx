@@ -12,10 +12,12 @@ import flixel.group.FlxGroup;
 class PlayState extends FlxState
 {
 	var da_player : Player;
-    var da_map : TiledMap;
-    var da_walls : FlxTilemap;
+	var da_map : TiledMap;
+	var da_walls : FlxTilemap;
 	var guards : FlxTypedGroup<Guard>;
 	var mirrors : FlxTypedGroup<Mirror>;
+	var pg = new PuzzleGrid(32, 32, 32, 0, 0);
+	var gemActivated = false;
 	override public function create():Void
 	{
 		guards = new FlxTypedGroup<Guard>();
@@ -77,10 +79,9 @@ class PlayState extends FlxState
 		
 		//da_player = new Player(100,100);
 		FlxG.camera.follow(da_player, NO_DEAD_ZONE, 1);
-		//add(guards);
+		pg.setPositionForAllObjects();
 		add(mirrors);
 		add(da_player);
-		guards.add(new Guard(0, 0));
 		add(guards);
 	}
 
@@ -95,14 +96,19 @@ class PlayState extends FlxState
 		//collide detection
 		//player hits wall
 		FlxG.collide(da_player, da_walls);
+
 		//guards hit wall
 		FlxG.collide(guards, da_walls);
+
 		//player hits guards
-		FlxG.collide(da_player, guards);
+		FlxG.collide(da_player, guards); //Why do we have this?
 		FlxG.overlap(da_player, guards, playerTouchGuard);
+
 		//player hits mirrors
 		FlxG.overlap(da_player, mirrors, playerTouchMirror);
-		//FlxG.collide(da_player, mirrors);
+		
+		//USE WHEN WE HAVE GEM CLASS
+		//FlxG.overlap(da_player, gem, playerTouchGem);
 		
 		//guard hit mirrors (?)
 		FlxG.collide(guards, mirrors);
@@ -125,19 +131,21 @@ class PlayState extends FlxState
 		 // the player item should be named player
 		 // same for mirror and guard items
 		 
-	    if (entityName == "player")
-	    {
-	        da_player.x = x;
-	        da_player.y = y;
-	    }
+		if (entityName == "player")
+		{
+			da_player.x = x;
+			da_player.y = y;
+		}
 		else if(entityName == "mirror"){
-			mirrors.add(new Mirror(x, y));
+			var m = new Mirror(x, y);
+			mirrors.add(m);
+			pg.addObjectToGridLocation(Std.int(Std.int(x) / 32), Std.int(Std.int(y) / 32), m);
+			//need an extra parameter for the direction of the mirror.
 		}
 		else if(entityName == "guard"){
 			var g = new Guard(x, y);
-			g.setPosition(20, 20);
 			guards.add(g);
-	
+			//need to get path data for the guards.
 		}
 		else if(entityName == "case"){
 			//add case and gem
@@ -149,11 +157,24 @@ class PlayState extends FlxState
 	function playerTouchMirror(p : Player, m : Mirror):Void{
 		if(FlxG.keys.justPressed.SPACE){
 			m.flip();
+			var lbd = pg.getDataForLightBeam(0, 0, 0, 0, 1); //change to start and end points of beam and initial direction of beam.
+			if (lbd.didContactGem && !gemActivated)
+			{
+				gemActivated = true;
+			}
 		}
 		FlxObject.separate(p, m);
-			//m.update();
-			//}
 	}
+//UNCOMMENT WHEN WE HAVE A GEM CLASS
+/*
+	function playerTouchGem(p: Player, g: Gem): Void
+	{
+		if (gemActivated)
+		{
+			//gem is removed from game board and the exit gate opens
+		}
+	}
+*/
 }
 	
 
