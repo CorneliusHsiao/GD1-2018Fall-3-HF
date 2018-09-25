@@ -193,6 +193,7 @@ class PlayState extends FlxState
 		FlxObject.separate(p, m);
 	}
 	function playerTouchTarget(p : Player, t : Target):Bool{
+		// *** 2 *** Call to activate Target so it will become collectable
 		t.setActivationStatus(true);
 		if (t.getActivationStatus()) {
 			// Hide Target (still reusable at stage)
