@@ -182,6 +182,8 @@ class PlayStateLv1 extends FlxState
 		}
 	}
 	function playerTouchGuard(p : Player, g : Guard):Void{
+		// Shake camera
+		FlxG.camera.shake(0.01, 0.2);
 		// Scene Fade-out animation
 		FlxG.camera.fade(FlxColor.BLACK,.33, false, function() {
 		    FlxG.switchState(new LoseState());
