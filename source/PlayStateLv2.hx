@@ -39,7 +39,7 @@ class PlayStateLv2 extends FlxState
 		da_walls = new FlxTilemap();
 		// *** 1 *** Set position of Target, Entrance and Exit
 		//entrance = new Gate(200,0,"Entrance",32,"assets/images/EntranceOpen.png","assets/images/EntranceClose.png");
-		exit = new Gate(500,992,"Exit",32,"assets/images/ExitClose.png","assets/images/ExitOpen.png");
+		exit = new Gate(300,992,"Exit",32,"assets/images/ExitClose.png","assets/images/ExitOpen.png");
 		
 		// we put "Layer1" in the getLayer function because the map(wall & floor) layer in
 		// test map is named "Layer1". 
@@ -83,6 +83,7 @@ class PlayStateLv2 extends FlxState
 
 		add(mirrors);
 		add(da_player);
+		placeGuards();
 		add(guards);
 		add(target);
 		//add(entrance);
@@ -94,6 +95,51 @@ class PlayStateLv2 extends FlxState
 		{
 			add(sprite);
 		}
+	}
+
+	public function placeGuards()
+	{
+		var points1 = new Array<FlxPoint>();
+		points1.push(new FlxPoint(4 * 32, 28 * 32));
+		points1.push(new FlxPoint(22 * 32, 28 * 32));
+		points1.push(new FlxPoint(22 * 32, 4 * 32));
+		points1.push(new FlxPoint(22 * 32, 28 * 32));
+		
+		var times1 = new Array<Float>();
+		times1.push(1.0);
+		times1.push(1.0);
+		times1.push(1.0);
+		times1.push(1.0);
+			
+
+		var g1 = new Guard(0, 0, points1, times1);
+		guards.add(g1);
+
+		var points2 = new Array<FlxPoint>();
+		points2.push(new FlxPoint(10 * 32, 8 * 32));
+		points2.push(new FlxPoint(20 * 32, 8 * 32));
+	
+		var times2 = new Array<Float>();
+		times2.push(0.1);
+		times2.push(0.1);
+
+		var g2 = new Guard(0, 0, points2, times2);
+		guards.add(g2);
+
+		var points3 = new Array<FlxPoint>();
+		points3.push(new FlxPoint(8 * 32, 16 * 32));
+		points3.push(new FlxPoint(14 * 32, 16 * 32));
+		points3.push(new FlxPoint(14 * 32, 24 * 32));
+		points3.push(new FlxPoint(8 * 32, 24 * 32));
+
+		var times3 = new Array<Float>();
+		times3.push(1.0);
+		times3.push(1.0);
+		times3.push(1.0);
+		times3.push(1.0);
+
+		var g3 = new Guard(0, 0, points3, times3);
+		guards.add(g3);
 	}
 
 	override public function update(elapsed:Float):Void
@@ -169,8 +215,8 @@ trace("hi");
 			//need an extra parameter for the direction of the mirror.
 		}
 		else if(entityName == "guard"){
-			var g = new Guard(x, y);
-			guards.add(g);
+			//var g = new Guard(x, y);
+			//guards.add(g);
 			//need to get path data for the guards.
 		}
 		else if(entityName == "case"){

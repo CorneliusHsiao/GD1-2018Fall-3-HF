@@ -14,10 +14,10 @@ class LoseState extends FlxState
 	
 	override public function create():Void
 	{
-		_playButton = new FlxButton(20,20,"Play Again", clickPlay);
+		_playButton = new FlxButton(512,600,"Play Again", clickPlay);
 		add(_playButton);
 		_loseImage = new FlxSprite();
-		_loseImage.loadGraphic("assets/images/YouLose.png", false, 600, 300, true);
+		_loseImage.loadGraphic("assets/images/YouLose.png", false, 1000, 500, true);
 		add(_loseImage);
 		super.create();
 	}

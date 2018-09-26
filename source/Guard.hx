@@ -15,7 +15,7 @@ class Guard extends FlxSprite {
 	public var speed : Float = 300;
 	public var movementAnimation: MovementAnimation;
 
-    public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset)
+    public function new(?X:Float=0, ?Y:Float=0, points:Array<FlxPoint>, times:Array<Float>, ?SimpleGraphic:FlxGraphicAsset)
     {
 	 //animation_playing = false;
 	super(X, Y, SimpleGraphic);
@@ -33,7 +33,7 @@ class Guard extends FlxSprite {
 
 	 //set default facing direction
 	 facing = FlxObject.DOWN;
-
+	movementAnimation = new MovementAnimation(points, times);
 	/*
 	var tempPoints = new Array<FlxPoint>();
 	tempPoints.push(new FlxPoint(0, 0));
@@ -54,8 +54,8 @@ class Guard extends FlxSprite {
  	}
 
 	override public function update(elapsed:Float):Void{
-		//movementAnimation.updateTime(elapsed);
-		//movementAnimation.setPositionAndDirection(this);
+		movementAnimation.updateTime(elapsed);
+		movementAnimation.setPositionAndDirection(this);
 		super.update(elapsed);
 	}
 	

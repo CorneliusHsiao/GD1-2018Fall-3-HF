@@ -5,17 +5,18 @@ import flixel.FlxG;
 import flixel.ui.FlxButton;
 import flixel.ui.*;
 import flixel.FlxSprite;
-class MenuState extends FlxState
+class TextState extends FlxState
 {
 	var _playButton : FlxButton;
+	var button: FlxSpriteButton;
 	
 	override public function create():Void
 	{
-		_playButton = new FlxButton(512,600,"Play:", clickPlay);
+		_playButton = new FlxButton(512, 600,"Play:", clickPlay);
 		add(_playButton);
 		super.create();
 		var text = new FlxSprite(0, 0);
-		text.loadGraphic("assets/images/title.png", true, 1000, 500);
+		text.loadGraphic("assets/images/introtext.png", true, 1000, 500);
 		add(text);
 	}
 
@@ -24,7 +25,7 @@ class MenuState extends FlxState
 		super.update(elapsed);
 	}
 	function clickPlay():Void{
-		FlxG.switchState(new TextState());
+		FlxG.switchState(new PlayStateLv1());
 	}
 }
 
