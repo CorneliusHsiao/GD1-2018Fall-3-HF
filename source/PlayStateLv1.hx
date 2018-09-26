@@ -85,6 +85,10 @@ class PlayStateLv1 extends FlxState
 		add(da_player);
 		placeGuards();
 		add(guards);
+		for (g in guards)
+		{
+			add(g.flashlight);
+		}
 		add(target);
 		add(target.caseSprite);
 		//add(entrance);

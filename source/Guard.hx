@@ -14,7 +14,7 @@ import flixel.util.*;
 class Guard extends FlxSprite {
 	public var speed : Float = 300;
 	public var movementAnimation: MovementAnimation;
-
+	public var flashlight = new FlxSprite(0, 0);
     public function new(?X:Float=0, ?Y:Float=0, points:Array<FlxPoint>, times:Array<Float>, ?SimpleGraphic:FlxGraphicAsset)
     {
 	 //animation_playing = false;
@@ -34,23 +34,12 @@ class Guard extends FlxSprite {
 	 //set default facing direction
 	 facing = FlxObject.DOWN;
 	movementAnimation = new MovementAnimation(points, times);
-	/*
-	var tempPoints = new Array<FlxPoint>();
-	tempPoints.push(new FlxPoint(0, 0));
-	tempPoints.push(new FlxPoint(100, 0));
-	tempPoints.push(new FlxPoint(100, 100));
-	tempPoints.push(new FlxPoint(0, 100));
-
-	var tempTimes = new Array<Float>();
-	tempTimes.push(1.0);
-	tempTimes.push(1.0);
-	tempTimes.push(1.0);
-	tempTimes.push(1.0);
-	movementAnimation = new MovementAnimation(tempPoints, tempTimes); 
-	*/
 	setGraphicSize(64, 64);
 	updateHitbox();
-	
+
+	flashlight.loadGraphic("assets/images/FlashlightLight.png", false, 32, 32);
+	flashlight.alpha = 0.8;
+	flashlight.setGraphicSize(32, 64);
  	}
 
 	override public function update(elapsed:Float):Void{

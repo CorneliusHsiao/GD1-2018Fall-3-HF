@@ -76,6 +76,29 @@ class MovementAnimation
 				var newX: Float = (point2.x * percent) + (point1.x * (1 - percent));
 				var newY: Float = (point2.y * percent) + (point1.y * (1 - percent));
 				guard.setPosition(newX, newY);
+				guard.flashlight.setPosition(newX, newY);
+				if (guard.facing == FlxObject.UP)
+				{
+					guard.flashlight.angle = 0;
+					guard.flashlight.setPosition(newX + 40, newY - 50);
+
+				}
+				else if (guard.facing == FlxObject.DOWN)
+				{
+					guard.flashlight.angle = 180;
+					guard.flashlight.setPosition(newX + 40, newY + 64);
+				}
+				else if (guard.facing == FlxObject.LEFT)
+				{
+					guard.flashlight.angle = 270;
+					guard.flashlight.setPosition(newX - 35, newY + 40);
+
+				}
+				else if (guard.facing == FlxObject.RIGHT)
+				{
+					guard.flashlight.angle = 90;
+					guard.flashlight.setPosition(newX + 60, newY + 40);
+				}
 				return;
 
 			}
