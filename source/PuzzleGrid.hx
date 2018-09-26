@@ -130,6 +130,7 @@ class PuzzleGrid
 				if (currentY == endY && currentX == endX)
 				{
 					lbd.didContactGem = true;
+					trace("HIT");
 					break;
 				}
 

@@ -23,6 +23,10 @@ class PlayStateLv1 extends FlxState
 	var target : Target;
 	var entrance : Gate;
 	var exit : Gate;
+	var emitterX = 13;
+	var emitterY = 0;
+	var endX = 0;
+	var endY = 0;
 	override public function create():Void
 	{
 		// Scene Fade-in Animation
@@ -30,108 +34,50 @@ class PlayStateLv1 extends FlxState
 
 		guards = new FlxTypedGroup<Guard>();
 		mirrors = new FlxTypedGroup<Mirror>();
-		da_player = new Player();
-		da_map = new TiledMap(AssetPaths.TheMuseumMap__tmx);
+		da_player = new Player(0, 300);
+		da_map = new TiledMap(AssetPaths.Level1__tmx);
 		da_walls = new FlxTilemap();
 		// *** 1 *** Set position of Target, Entrance and Exit
-		target = new Target(550,260,32,"assets/images/Crystal.png");
-		entrance = new Gate(200,-160,"Entrance",32,"assets/images/EntranceOpen.png","assets/images/EntranceClose.png");
-		exit = new Gate(500,870,"Exit",32,"assets/images/ExitClose.png","assets/images/ExitOpen.png");
+		//entrance = new Gate(200,0,"Entrance",32,"assets/images/EntranceOpen.png","assets/images/EntranceClose.png");
+		exit = new Gate(500,992,"Exit",32,"assets/images/ExitClose.png","assets/images/ExitOpen.png");
 		
 		// we put "Layer1" in the getLayer function because the map(wall & floor) layer in
 		// test map is named "Layer1". 
 		//
 		// should be changed if the map layer have another name.
 		
-		da_walls.loadMapFromArray(cast(da_map.getLayer("MainLayer"), TiledTileLayer).tileArray,
+		da_walls.loadMapFromArray(cast(da_map.getLayer("Tile Layer 1"), TiledTileLayer).tileArray,
 		   da_map.width, da_map.height, AssetPaths.MapTileSet__png, da_map.tileWidth, da_map.tileHeight, 1,1,16);
 		da_walls.follow();
 		for(i in 1...12){
 			da_walls.setTileProperties(i, FlxObject.NONE);
 		}
-		//da_walls.setTileProperties(2, FlxObject.NONE);
-		//da_walls.setTileProperties(3, FlxObject.ANY);	
-		
-		da_walls.offset.set(128, 0);
+
 		add(da_walls);
-		
-		// make sure player, mirrors and guards have their own layers,
-		// and the items in the layers are named correctly
-		// (as required in the placeEntities function)
-		// layers should also be named according to the following code
-		// reading spawn location of player
-		
-		var tmpMap_p : TiledObjectLayer = cast da_map.getLayer("player");
-		for(e in tmpMap_p.objects){
-			placeEntities(e.type, e.xmlData.x);
-		}
-		
-		
-		
-		/* 
-		
-			commented out this part because the test map doesn't have
-			mirror and guard layers, and attempting to read those layers
-			would cause runtime exceptions
-		
-			should work fine w/ maps having those two layers
-		*/	
-		// reading position of mirrors
-		var tmpMap_m : TiledObjectLayer = cast da_map.getLayer("Mirrors");
-		for(e in tmpMap_m.objects){
-			placeEntities(e.type, e.xmlData.x);
-		}
-		
-		/*
-		//position of guards
-		var tmpMap_g : TiledObjectLayer = cast da_map.getLayer("guards");
-		for(e in tmpMap_g.objects){
-			placeEntities(e.type, e.xmlData.x);
-		}
-		*/
-		
-		
-		//da_player = new Player(100,100);
-		FlxG.camera.follow(da_player, NO_DEAD_ZONE, 1);
-		/*
-		var mirror1 = new Mirror(1, 1);
-		mirror1.facing = FlxObject.UP;
 
-		var mirror2 = new Mirror(3, 1);
-		mirror2.facing = FlxObject.UP;
-
-		var mirror3 = new Mirror(0, 2);
-		mirror3.facing = FlxObject.UP;
-
-		var mirror4 = new Mirror(1, 2);
-		mirror4.facing = FlxObject.UP;
-
-		var mirror5 = new Mirror(0, 3);
-		var mirror6 = new Mirror(1, 3);
-
-		var mirror7 = new Mirror(1, 4);
-
-		var mirror8 = new Mirror(2, 4);
-		mirror8.facing = FlxObject.UP;
-
-		pg.addObjectToGridLocation(3, 3, mirror1);
-		pg.addObjectToGridLocation(9, 3, mirror2);
-		pg.addObjectToGridLocation(0, 6, mirror3);
-		pg.addObjectToGridLocation(3, 6, mirror4);
-		pg.addObjectToGridLocation(0, 9, mirror5);
-		pg.addObjectToGridLocation(3, 9, mirror6);
-		pg.addObjectToGridLocation(3, 12, mirror7);
-		pg.addObjectToGridLocation(6, 12, mirror8);
+		//read in mirror and gem location
+		var tmpMap_t : TiledTileLayer = cast da_map.getLayer("Tile Layer 2");
+		var counter: Int = 0;
+		for (e in tmpMap_t.tileArray){
+			if (e == 18)
+			{
+				var m: Mirror = new Mirror(0, 0);
+				pg.addObjectToGridLocation(counter % 32, Std.int(Std.int(counter) / 32), m);
+				mirrors.add(m);
+				m.flip();
+			}
+			else if (e == 17)
+			{	
+				endY = Std.int(Std.int(counter) / 32);
+				endX = (counter % 32);
+				target = new Target(Std.int(Std.int(counter) / 32) * 32,(counter % 32) * 32,32,"assets/images/Crystal.png");
+			}
+			counter++;
+				
+		}		
 	
-		mirrors.add(mirror1);
-		mirrors.add(mirror2);
-		mirrors.add(mirror3);
-		mirrors.add(mirror4);
-		mirrors.add(mirror5);
-		mirrors.add(mirror6);
-		mirrors.add(mirror7);
-		mirrors.add(mirror8);
-		*/
+				
+		FlxG.camera.follow(da_player, NO_DEAD_ZONE, 1);
 		pg.setPositionForAllObjects();
 
 
@@ -139,9 +85,11 @@ class PlayStateLv1 extends FlxState
 		add(da_player);
 		add(guards);
 		add(target);
-		add(entrance);
+		//add(entrance);
 		add(exit);
-		beam = pg.getDataForLightBeam(9, 0, 6, 0, 1).beamSprites;
+		var emitter = new Emitter(13 * 32, 0);
+		add(emitter);
+		beam = pg.getDataForLightBeam(emitterX, emitterY, endX, endY, 1).beamSprites;
 		for (sprite in beam)
 		{
 			add(sprite);
@@ -158,13 +106,13 @@ class PlayStateLv1 extends FlxState
 		
 		//collide detection
 		//player hits wall
-		FlxG.collide(da_player, da_walls);
+		//FlxG.collide(da_player, da_walls);
 
 		//guards hit wall
-		FlxG.collide(guards, da_walls);
+		//FlxG.collide(guards, da_walls);
 
 		//player hits guards
-		FlxG.collide(da_player, guards); //Why do we have this?
+		//FlxG.collide(da_player, guards); //Why do we have this?
 		FlxG.overlap(da_player, guards, playerTouchGuard);
 
 		//player hits mirrors
@@ -194,7 +142,7 @@ class PlayStateLv1 extends FlxState
 
 		// Maintain positions of Target, Entrance, and Exit
 		target.updatePosition();
-		entrance.updatePosition();
+		//entrance.updatePosition();
 		exit.updatePosition();
 		// Update activation status of target from gemActivated
 		target.setActivationStatus(gemActivated);
@@ -244,7 +192,7 @@ trace("hi");
 			{
 				remove(sprite, true);
 			}
-			var lbd = pg.getDataForLightBeam(9, 0, 6, 0, 1); //change to start and end points of beam and initial direction of beam.
+			var lbd = pg.getDataForLightBeam(emitterX, emitterY, endX, endY, 1); //change to start and end points of beam and initial direction of beam.
 			beam = lbd.beamSprites;
 			for (sprite in beam)
 			{
@@ -258,7 +206,7 @@ trace("hi");
 		FlxObject.separate(p, m);
 	}
 	function playerTouchTarget(p : Player, t : Target):Bool{
-		if (t.getActivationStatus()) {
+		if (gemActivated) {
 			// Hide Target (still reusable at stage)
 			t.kill();
 			// Set flag to activate Exit
@@ -267,9 +215,9 @@ trace("hi");
 			return true;
 		}
 		else {
-			FlxObject.separate(p, t);
 			// Maintain position of Target
 			t.updatePosition();
+			FlxObject.separate(p, t);
 			return false;
 		}
 	}
@@ -279,7 +227,6 @@ trace("hi");
 			FlxG.camera.fade(FlxColor.BLACK,.33, false, function() {
 			    FlxG.switchState(new PlayStateLv2());
 			});
-			//FlxG.switchState(new PlayStateLv2());
 		}
 		else {
 			FlxObject.separate(p, g);
