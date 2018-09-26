@@ -17,6 +17,7 @@ class PlayStateLv1 extends FlxState
 	var da_walls : FlxTilemap;
 	var guards : FlxTypedGroup<Guard>;
 	var mirrors : FlxTypedGroup<Mirror>;
+	var beam = new Array<Light>();
 	var pg = new PuzzleGrid(32, 32, 32, 0, 0);
 	var gemActivated = false;
 	var target : Target;
@@ -30,7 +31,7 @@ class PlayStateLv1 extends FlxState
 		guards = new FlxTypedGroup<Guard>();
 		mirrors = new FlxTypedGroup<Mirror>();
 		da_player = new Player();
-		da_map = new TiledMap(AssetPaths.TestMap2__tmx);
+		da_map = new TiledMap(AssetPaths.TheMuseumMap__tmx);
 		da_walls = new FlxTilemap();
 		// *** 1 *** Set position of Target, Entrance and Exit
 		target = new Target(550,260,32,"assets/images/Crystal.png");
@@ -42,7 +43,7 @@ class PlayStateLv1 extends FlxState
 		//
 		// should be changed if the map layer have another name.
 		
-		da_walls.loadMapFromArray(cast(da_map.getLayer("Layer1"), TiledTileLayer).tileArray,
+		da_walls.loadMapFromArray(cast(da_map.getLayer("MainLayer"), TiledTileLayer).tileArray,
 		   da_map.width, da_map.height, AssetPaths.MapTileSet__png, da_map.tileWidth, da_map.tileHeight, 1,1,16);
 		da_walls.follow();
 		for(i in 1...12){
@@ -76,7 +77,7 @@ class PlayStateLv1 extends FlxState
 			should work fine w/ maps having those two layers
 		*/	
 		// reading position of mirrors
-		var tmpMap_m : TiledObjectLayer = cast da_map.getLayer("mirrors");
+		var tmpMap_m : TiledObjectLayer = cast da_map.getLayer("Mirrors");
 		for(e in tmpMap_m.objects){
 			placeEntities(e.type, e.xmlData.x);
 		}
@@ -92,13 +93,59 @@ class PlayStateLv1 extends FlxState
 		
 		//da_player = new Player(100,100);
 		FlxG.camera.follow(da_player, NO_DEAD_ZONE, 1);
+		/*
+		var mirror1 = new Mirror(1, 1);
+		mirror1.facing = FlxObject.UP;
+
+		var mirror2 = new Mirror(3, 1);
+		mirror2.facing = FlxObject.UP;
+
+		var mirror3 = new Mirror(0, 2);
+		mirror3.facing = FlxObject.UP;
+
+		var mirror4 = new Mirror(1, 2);
+		mirror4.facing = FlxObject.UP;
+
+		var mirror5 = new Mirror(0, 3);
+		var mirror6 = new Mirror(1, 3);
+
+		var mirror7 = new Mirror(1, 4);
+
+		var mirror8 = new Mirror(2, 4);
+		mirror8.facing = FlxObject.UP;
+
+		pg.addObjectToGridLocation(3, 3, mirror1);
+		pg.addObjectToGridLocation(9, 3, mirror2);
+		pg.addObjectToGridLocation(0, 6, mirror3);
+		pg.addObjectToGridLocation(3, 6, mirror4);
+		pg.addObjectToGridLocation(0, 9, mirror5);
+		pg.addObjectToGridLocation(3, 9, mirror6);
+		pg.addObjectToGridLocation(3, 12, mirror7);
+		pg.addObjectToGridLocation(6, 12, mirror8);
+	
+		mirrors.add(mirror1);
+		mirrors.add(mirror2);
+		mirrors.add(mirror3);
+		mirrors.add(mirror4);
+		mirrors.add(mirror5);
+		mirrors.add(mirror6);
+		mirrors.add(mirror7);
+		mirrors.add(mirror8);
+		*/
 		pg.setPositionForAllObjects();
+
+
 		add(mirrors);
 		add(da_player);
 		add(guards);
 		add(target);
 		add(entrance);
 		add(exit);
+		beam = pg.getDataForLightBeam(9, 0, 6, 0, 1).beamSprites;
+		for (sprite in beam)
+		{
+			add(sprite);
+		}
 	}
 
 	override public function update(elapsed:Float):Void
@@ -168,6 +215,7 @@ class PlayStateLv1 extends FlxState
 		}
 		else if(entityName == "mirror"){
 			var m = new Mirror(x, y);
+trace("hi");
 			mirrors.add(m);
 			pg.addObjectToGridLocation(Std.int(Std.int(x) / 32), Std.int(Std.int(y) / 32), m);
 			//need an extra parameter for the direction of the mirror.
@@ -192,7 +240,16 @@ class PlayStateLv1 extends FlxState
 	function playerTouchMirror(p : Player, m : Mirror):Void{
 		if(FlxG.keys.justPressed.SPACE){
 			m.flip();
-			var lbd = pg.getDataForLightBeam(0, 0, 0, 0, 1); //change to start and end points of beam and initial direction of beam.
+			for (sprite in beam)
+			{
+				remove(sprite, true);
+			}
+			var lbd = pg.getDataForLightBeam(9, 0, 6, 0, 1); //change to start and end points of beam and initial direction of beam.
+			beam = lbd.beamSprites;
+			for (sprite in beam)
+			{
+				add(sprite);
+			}
 			if (lbd.didContactGem && !gemActivated)
 			{
 				gemActivated = true;

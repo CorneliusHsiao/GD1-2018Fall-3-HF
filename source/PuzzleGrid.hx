@@ -12,10 +12,12 @@ import flixel.math.*;
 class LightBeamData {
 	public var didContactGem: Bool;
 	public var pointList: Array<FlxPoint>;
+	public var beamSprites: Array<Light>;
 	public function new()
 	{
 		didContactGem = false;
 		pointList = new Array<FlxPoint>();
+		beamSprites = new Array<Light>();
 	}
 }
 
@@ -125,7 +127,6 @@ class PuzzleGrid
 				currentY += dy;
 
 				lbd.pointList.push(new FlxPoint(currentX, currentY));
-				
 				if (currentY == endY && currentX == endX)
 				{
 					lbd.didContactGem = true;
@@ -133,10 +134,20 @@ class PuzzleGrid
 				}
 
 				if (!isGridSpaceEmpty(currentX, currentY))
-				{
+				{	
+					var directionForL = 0;
 					//the magic reflection formula.
 					if (getObjectsAtGridLocation(currentX, currentY)[0].facing == FlxObject.DOWN)
 					{
+						if (currentDirection == RIGHT || currentDirection == UP)
+						{
+							directionForL = RIGHT;
+						}
+						else
+						{
+							directionForL = LEFT;
+						}
+
 						if (currentDirection % 2 == 0)
 						{
 							currentDirection += 1;
@@ -148,11 +159,23 @@ class PuzzleGrid
 					}
 					else
 					{
+						if (currentDirection == LEFT || currentDirection == UP)
+						{
+							directionForL = UP;
+						}
+						else
+						{
+							directionForL = DOWN;
+						}
+
 						currentDirection = 3 - currentDirection;
 					}
+					lbd.beamSprites.push(new Light(currentX * _width + _offsetX, currentY * _height + _offsetY, directionForL, 0));
+
 				}
 				else
 				{
+					lbd.beamSprites.push(new Light(currentX * _width + _offsetX, currentY * _height + _offsetY, currentDirection, 1));
 				}
 			}
 		}
