@@ -86,6 +86,7 @@ class PlayStateLv2 extends FlxState
 		placeGuards();
 		add(guards);
 		add(target);
+		add(target.caseSprite);
 		//add(entrance);
 		add(exit);
 		var emitter = new Emitter(13 * 32, 0);
